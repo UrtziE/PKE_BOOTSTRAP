@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Araudia</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body, html {
             height: 100%;
+            background-color: #f8f9fa; /* Fondo suave para mejor contraste */
         }
         .main-container {
             display: flex;
@@ -16,150 +16,230 @@
             justify-content: center;
             align-items: center;
             height: 100%;
+            width: 100%;
+            overflow: hidden; /* Evita scroll en el body */
         }
-        .cards-wrapper {
+
+        h1 {
+            text-align: center;
+            width: 100%;
+        }
+
+        .carousel-wrapper {
             display: flex;
-            overflow-x: auto;
+            align-items: center;
+            justify-content: center; /* Centra el bloque entero */
+            width: 100%;
+            max-width: 400px; /* Limita el ancho en pantallas grandes */
+            position: relative;
+        }
+
+        /* --- CONTENEDOR VERTICAL DE CARDS --- */
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;      /* ¡ESTO CENTRA LAS CARDS! */
+            gap: 20px;
+            
+            height: 55vh;             /* Altura relativa a la pantalla */
+            width: 100%;
+            
+            overflow-y: auto;         /* Scroll vertical */
             scroll-behavior: smooth;
-            width: 80%;
-            padding: 20px 0;
+            padding: 10px 0;          /* Espacio arriba y abajo */
+            
+            /* Ocultar barra de scroll (estética móvil) */
+            scrollbar-width: none;    /* Firefox */
         }
-        .cards-wrapper::-webkit-scrollbar {
-            height: 8px;
+        .cards-container::-webkit-scrollbar { 
+            display: none;            /* Chrome/Safari */
         }
-        .cards-wrapper::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 4px;
-        }
+
         .card {
-            min-width: 200px;
-            margin: 0 10px;
+            width: 220px;             /* Un poco más anchas para móvil */
+            height: 320px;
             flex-shrink: 0;
-            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: none;             /* Sin borde se ve más limpio */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Sombra más moderna */
+            border-radius: 15px;      /* Bordes redondeados */
+            background: white;
         }
+
+        .card-img-wrapper {
+            height: 65%;
+            width: 100%;
+        }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-body {
+            height: 35%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .card-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #333;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
         #descripcion {
             margin-top: 20px;
-            width: 80%;
+            width: 85%;
             text-align: center;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
+
+        /* Botones flotantes o laterales */
+        .btn-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-right: 15px;
+            z-index: 10;
+        }
+        
+        /* Estilo botones redondos */
+        .btn-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
     </style>
 </head>
 <body>
     <div class="main-container">
-        <h1 class="mb-4">Araudia</h1>
+        <h1 class="mb-3 fw-bold text-primary">Araudia</h1>
 
-        <div class="d-flex align-items-center">
-            <button class="btn btn-primary me-2" onclick="scrollCards(-300)">Izquierda</button>
-            <div class="cards-wrapper" id="cards-container">
-                <!-- 12 Cards generadas dinámicamente -->
-                <div class="card" onclick="mostrarDescripcion(1)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 1">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 1</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(2)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 2">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 2</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(3)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 3">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 3</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(4)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 4">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 4</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(5)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 5">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 5</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(6)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 6">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 6</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(7)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 7">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 7</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(8)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 8">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 8</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(9)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 9">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 9</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(10)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 10">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 10</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(11)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 11">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 11</h5>
-                    </div>
-                </div>
-                <div class="card" onclick="mostrarDescripcion(12)">
-                    <img src="https://via.placeholder.com/200x150" class="card-img-top" alt="Card 12">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Título 12</h5>
-                    </div>
-                </div>
+        <div class="carousel-wrapper">
+            <div class="btn-wrapper">
+                <button class="btn btn-primary btn-circle" onclick="scrollCards(-1)">&#8593;</button>
+                <button class="btn btn-primary btn-circle" onclick="scrollCards(1)">&#8595;</button>
             </div>
-            <button class="btn btn-primary ms-2" onclick="scrollCards(300)">Derecha</button>
+
+            <div class="cards-container" id="cards-container"></div>
         </div>
 
-        <div id="descripcion" class="alert alert-secondary" style="display: none;"></div>
+        <div id="descripcion" class="alert alert-light border" style="display: none;"></div>
     </div>
 
     <script>
+        const titulos = [
+          "1. DESKRIBAPEN OROKORRA ETA BETE BEHARRAK",
+          "2. ZEINTZUK DIRA HELBURUAK ETA ZER LANTZEN DA",
+          "3. IZEN-EMATEA ETA DEIALDIAK",
+          "4. LANEN ZUZENDARITZA",
+          "5. GAIAK ETA ESPEZIALITATEA",
+          "6. LANA ESLEITZEA ETA GAIA AUKERATZEA",
+          "7. EBALUAZIO-EPAIMAHAIA",
+          "8. LANAREN AURKEZPENA ETA DEFENTSA",
+          "9. EBALUAZIOA ETA KALIFIKAZIOA",
+          "10. GRADU AMAIERAKO LAN BATZORDEA",
+          "11. ARAUDI HAU EGUNERATZEA"
+        ];
+
+        const totalCards = titulos.length;
+        const cardsContainer = document.getElementById('cards-container');
+        // Puedes rellenar descripciones aquí:
         const descripciones = {
-            1: "Texto largo de la Card 1...",
-            2: "Texto largo de la Card 2...",
-            3: "Texto largo de la Card 3...",
-            4: "Texto largo de la Card 4...",
-            5: "Texto largo de la Card 5...",
-            6: "Texto largo de la Card 6...",
-            7: "Texto largo de la Card 7...",
-            8: "Texto largo de la Card 8...",
-            9: "Texto largo de la Card 9...",
-            10: "Texto largo de la Card 10...",
-            11: "Texto largo de la Card 11...",
-            12: "Texto largo de la Card 12..."
+            1: "Hemen Araudiaren deskribapen orokorra agertuko da...",
+            2: "Helburuei buruzko informazio gehigarria..."
         };
+
+        for (let i = 0; i < totalCards; i++) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            // CORREGIDO: uso de backticks (`)
+            card.id = `card-${i+1}`;
+
+            // CORREGIDO: uso de backticks (`) para el template string
+            card.innerHTML = `
+                <div class="card-img-wrapper">
+                    <img src="img/artikulu${i+1}.png" alt="Artikulua ${i+1}" onclick="mostrarDescripcion(${i+1})">
+                </div>
+                <div class="card-body">
+                    <p class="card-title">${titulos[i]}</p>
+                </div>
+            `;
+            cardsContainer.appendChild(card);
+        }
 
         function mostrarDescripcion(id) {
             const descripcionDiv = document.getElementById('descripcion');
             descripcionDiv.style.display = 'block';
-            descripcionDiv.innerHTML = descripciones[id];
+            descripcionDiv.innerHTML = descripciones[id] || ("Informazioa: Artikulua " + id);
         }
 
-        function scrollCards(offset) {
-            const container = document.getElementById('cards-container');
-            container.scrollBy({ left: offset, behavior: 'smooth' });
+        // Scroll VERTICAL
+        function scrollCards(direction) {
+            const cardHeight = cardsContainer.querySelector('.card').offsetHeight + 20; // + gap
+            cardsContainer.scrollBy({ top: direction * cardHeight, behavior: 'smooth' });
         }
+
+        // Drag vertical (Mouse & Touch unificados conceptualmente)
+        let isDragging = false;
+        let startY;
+        let scrollStart;
+
+        // Mouse events
+        cardsContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startY = e.pageY - cardsContainer.offsetTop;
+            scrollStart = cardsContainer.scrollTop;
+            cardsContainer.style.cursor = 'grabbing';
+        });
+
+        cardsContainer.addEventListener('mouseleave', () => { isDragging = false; cardsContainer.style.cursor = 'grab'; });
+        cardsContainer.addEventListener('mouseup', () => { isDragging = false; cardsContainer.style.cursor = 'grab'; });
+
+        cardsContainer.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const y = e.pageY - cardsContainer.offsetTop;
+            const walk = (startY - y) * 1.5;
+            cardsContainer.scrollTop = scrollStart + walk;
+        });
+
+        // Touch events (Nativo funciona bien, pero esto ayuda si quieres control extra)
+        let touchStartY = 0;
+        let touchScrollStart = 0;
+
+        cardsContainer.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].pageY;
+            touchScrollStart = cardsContainer.scrollTop;
+        });
+
+        cardsContainer.addEventListener('touchmove', (e) => {
+            // No preventDefault aquí para permitir el scroll nativo suave
+            const touchY = e.touches[0].pageY;
+            // Opcional: Lógica extra si fuera necesaria
+        });
     </script>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
