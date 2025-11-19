@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Araudia</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <style>
+        /* --- ESTILOS GENERALES DE LA PÁGINA --- */
         body, html {
             height: 100%;
             background-color: #f8f9fa;
+            /* Importante: padding abajo para que el menú no tape el contenido al final */
+            padding-bottom: 60px; 
+            box-sizing: border-box;
         }
         .main-container {
             display: flex;
@@ -43,9 +49,9 @@
         }
         .cards-container::-webkit-scrollbar { display: none; /* Chrome */ }
 
-        /* Estilo de la Tarjeta */
+        /* --- ESTILOS DE LAS TARJETAS --- */
         .card {
-            width: 240px; /* Un poco más ancho para leer mejor */
+            width: 240px;
             height: 300px; 
             flex-shrink: 0;
             display: flex;
@@ -95,23 +101,20 @@
             overflow: hidden;
         }
 
-        /* --- ESTO ES LO NUEVO PARA QUE EL TEXTO SALGA DEBAJO --- */
         .card-details {
-            display: none; /* Oculto por defecto */
-            width: 240px;  /* Mismo ancho que la card */
+            display: none;
+            width: 240px;
             background-color: #fff;
             border: 1px solid #e0e0e0;
             border-top: none;
-            border-radius: 0 0 15px 15px; /* Redondeado solo abajo */
+            border-radius: 0 0 15px 15px;
             padding: 15px;
             font-size: 0.85rem;
             color: #444;
             text-align: left;
             box-shadow: 0 8px 10px rgba(0,0,0,0.05);
-            margin-top: -12px; /* Pegado a la tarjeta de arriba */
+            margin-top: -12px;
             margin-bottom: 15px; 
-            
-            /* --- LA CLAVE PARA QUE FUNCIONEN LOS \n --- */
             white-space: pre-line; 
         }
 
@@ -131,9 +134,44 @@
             font-size: 1.2rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
+
+        /* --- ESTILOS NUEVOS: BARRA DE NAVEGACIÓN INFERIOR --- */
+        .menu-icon {
+            max-height: 28px;
+            max-width: 100%;
+            margin-bottom: 4px;
+        }
+        .bottom-nav-blue {
+            background-color: rgba(147, 146, 147, 0.76);
+        }
+        .bottom-nav-blue .nav-link {
+            color: #ffffff;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            transition: background-color 0.2s ease;
+        }
+        .bottom-nav-blue .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        /* Estilo para la opción ACTIVA */
+        .bottom-nav-blue .nav-link.active {
+            background-color: rgba(0, 0, 0, 0.15);
+            font-weight: bold;
+        }
+        .bottom-nav-blue .nav-link small {
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+        .bottom-nav-blue .nav-item {
+            flex-grow: 1;
+        }
+        .bottom-nav-blue .nav-item:not(:last-child) {
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 <body>
+    
     <div class="main-container">
         <h1 class="mb-3 fw-bold text-primary">Araudia</h1>
 
@@ -147,6 +185,10 @@
                 </div>
         </div>
     </div>
+
+    <div id="menu-container"></div>
+
+<script src="loader-menu.js"></script>
 
     <script>
         const titulos = [
@@ -184,11 +226,9 @@
         for (let i = 0; i < totalCards; i++) {
             const id = i + 1;
             
-            // 1. Crear la CARD (Portada)
             const card = document.createElement('div');
             card.className = 'card';
             card.id = `card-${id}`;
-            // Al hacer click en la carta, abrimos SU descripción
             card.onclick = () => toggleDescription(id, card);
 
             card.innerHTML = `
@@ -200,54 +240,38 @@
                 </div>
             `;
 
-            // 2. Crear el DIV DE DETALLES (Oculto inicialmente)
             const details = document.createElement('div');
             details.className = 'card-details';
             details.id = `details-${id}`;
             
-            // Rellenamos con el texto del objeto 'descripciones'
-            // Si no hay texto, ponemos uno por defecto.
             details.innerHTML = descripciones[id] || ("Ez dago informaziorik eskuragarri artikulu honetarako (" + id + ").");
 
-            // 3. Añadir ambos al contenedor (La carta Y su detalle debajo)
             cardsContainer.appendChild(card);
             cardsContainer.appendChild(details);
         }
 
-        // Función para abrir/cerrar
         function toggleDescription(id, cardElement) {
             const detailsDiv = document.getElementById(`details-${id}`);
             const isVisible = detailsDiv.style.display === 'block';
 
-            // Opcional: Cerrar todos los demás para que solo haya uno abierto (efecto acordeón limpio)
-            /*
-            document.querySelectorAll('.card-details').forEach(el => el.style.display = 'none');
-            document.querySelectorAll('.card').forEach(el => el.style.borderRadius = "15px");
-            */
-
             if (isVisible) {
-                // Si estaba abierto, lo cerramos
                 detailsDiv.style.display = 'none';
-                cardElement.style.borderRadius = "15px"; // Bordes redondos de nuevo
+                cardElement.style.borderRadius = "15px";
             } else {
-                // Si estaba cerrado, lo abrimos
                 detailsDiv.style.display = 'block';
-                cardElement.style.borderRadius = "15px 15px 0 0"; // Parte de abajo recta para pegar con el texto
+                cardElement.style.borderRadius = "15px 15px 0 0"; 
                 
-                // Pequeño scroll para que se vea bien si queda muy abajo
                 setTimeout(() => {
                     detailsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }, 100);
             }
         }
 
-        // Scroll botones
         function scrollCards(direction) {
             const cardHeight = 320; 
             cardsContainer.scrollBy({ top: direction * cardHeight, behavior: 'smooth' });
         }
         
-        // Drag Logic
         let isDragging = false;
         let startY, scrollStart;
         cardsContainer.addEventListener('mousedown', (e) => {
