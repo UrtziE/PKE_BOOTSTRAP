@@ -293,6 +293,12 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     let score = 0;
+    const now = new Date().toLocaleString();
+
+
+// Guardar como cadena JSON
+
+
     
     const questions = form.querySelectorAll(".question");
     questions.forEach((q, index) => {
@@ -335,8 +341,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if(correctFlag) score++;
       }
     });
+    const resultados = {
+  fecha: now,
+  puntuacion: score,
+  total: correct.length
+};
 
     emaitza.textContent = `📊 Emaitza: ${score}/${correct.length} galdera ondo erantzunda.`;
+    localStorage.setItem("ultimos_resultados_gal", JSON.stringify(resultados));
+
     emaitza.classList.remove("d-none");
   });
 });
