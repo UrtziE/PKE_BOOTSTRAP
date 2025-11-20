@@ -1,135 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="eu">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Guri Buruz - About Us</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            padding-bottom: 100px;
-        }
-
-        main {
-            flex: 1;
-        }
-
-        .bottom-nav-blue {
-            background-color: rgba(147, 146, 147, 0.76);
-        }
-
-        .bottom-nav-blue .nav-link {
-            color: #ffffff;
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
-            transition: background-color 0.2s ease;
-        }
-
-        .bottom-nav-blue .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .bottom-nav-blue .nav-link.active {
-            background-color: rgba(0, 0, 0, 0.15);
-            font-weight: bold;
-        }
-
-        .bottom-nav-blue .nav-link small {
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-        }
-
-        .bottom-nav-blue .nav-item {
-            flex-grow: 1;
-        }
-
-        .bottom-nav-blue .nav-item:not(:last-child) {
-            border-right: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .menu-icon {
-            max-height: 28px;
-            max-width: 100%;
-            margin-bottom: 4px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guri Buruz - About Us</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/navig.css">
 </head>
-
 <body>
 
-
-<main class="container my-5">
-
-    <div class="text-center mb-5">
-        <h1 class="display-5">Egileak</h1>
-        <p class="lead">Taldeko kideen informazioa</p>
+  <!-- Nabigazio barra -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand"  target="_blank" rel="noopener noreferrer">
+        <img class="logo"
+             src="https://www.ehu.eus/o/ehu-theme/images/custom/EHU_logotipo_negativo_EUES_horizontal_sinfondo.svg"
+             alt="Universidad del País Vasco"
+             height="40">
+      </a>
+        <!--
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Hasiera</a></li>
+          <li class="nav-item"><a class="nav-link" href="araudia.html">Araudia</a></li>
+          <li class="nav-item"><a class="nav-link" href="egutegia.html">Deialdiaren Egutegi eta Urratsak</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">GrAL-ak</a></li>
+          <li class="nav-item"><a class="nav-link" href="autoebaluazioa.html">Autoebaluazioa</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+        </ul>
+      </div>-->
     </div>
+  </nav>
 
-    
-    <div class="row text-center">
 
-        <div class="col-sm-6 col-md-3 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Urtzi Etxegarai Taberna</h5>
-                    <p class="card-text">EHUko Informatika Fakultateko ikaslea.</p>
-                </div>
+
+  <!-- Edukia -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">Egileak:</h2>
+      <div class="row text-center">
+  
+        <div class="col-md-3 mb-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Urtzi Etxegarai Taberna</h5>
+              <p class="card-text">EHU-ko Informatika Fakultateko ikaslea.</p>
             </div>
+          </div>
         </div>
-
-        <div class="col-sm-6 col-md-3 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Beñat Ercibengoa Calvo</h5>
-                    <p class="card-text">EHUko Informatika Fakultateko ikaslea.</p>
-                </div>
+  
+        <div class="col-md-3 mb-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Beñat Ercibengoa Calvo</h5>
+              <p class="card-text"> EHU-ko Informatika Fakultateko ikaslea.</p>
             </div>
+          </div>
         </div>
-
-        <div class="col-sm-6 col-md-3 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Iker Sada Arrese-Igor</h5>
-                    <p class="card-text">EHUko Informatika Fakultateko ikaslea.</p>
-                </div>
+  
+        <div class="col-md-3 mb-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Iker Sada Arrese-Igor</h5>
+              <p class="card-text">EHU-ko Informatika Fakultateko ikaslea.</p>
             </div>
+          </div>
         </div>
-
-        <div class="col-sm-6 col-md-3 mb-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Qian Lizhang</h5>
-                    <p class="card-text">EHUko Informatika Fakultateko ikaslea.</p>
-                </div>
+  
+        <div class="col-md-3 mb-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Qian Lizhang</h5>
+              <p class="card-text">EHU-ko Informatika Fakultateko ikaslea.</p>
             </div>
+          </div>
         </div>
-
+  
+      </div>
+  
+      <div class="mt-5 text-center">
+        <p class="lead">Webgune honetan eskaintzen den informazioa EHUko iturrietatik jasotakoa da, baina ez du inongo intentziorik iturri horiek ordezkatzeko. Eduki hau eskola ariketa baten barruan eraiki da. Informazioa hemendik atera dugu:</p>
+        <a href="https://www.ehu.eus" target="_blank" rel="noopener noreferrer">EHU web-orria</a>.
+      </div>
     </div>
-
-    <div class="mt-5 text-center">
-        <p class="lead">
-            Webgune honetako informazioa EHUko iturrietatik jasotakoa da,
-            eta eskola-ariketa baten barruan garatua izan da.
-            Informazioa honetatik hartu da:
-        </p>
-        <a href="https://www.ehu.eus" target="_blank" rel="noopener noreferrer">
-            EHU web-orria
-        </a>.
-    </div>
-</main>
+  </section>
 
 
-<div id="menu-container"></div>
-<script src="loader-menu.js"></script>
+  <div id="menu-container"></div>
 
+  <script src="loader-menu.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
