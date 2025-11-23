@@ -22,11 +22,11 @@ body {
 }
 
 .menu-icon {
-    height: 100%;
+    height: auto;
     max-height: 55px;
     width: auto;
     max-width: 100%;
-
+    object-fit: contain;
     transition: transform 0.2s;
 
     mix-blend-mode: multiply;
@@ -43,6 +43,6 @@ body {
 }
 .bottom-nav-blue .nav-link.active {
     filter: invert(1);
-    background-color: #c1b4b4
+    transform: scale(1.4);
 }
 .
