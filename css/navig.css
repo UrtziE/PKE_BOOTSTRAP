@@ -43,6 +43,6 @@ body {
 }
 .bottom-nav-blue .nav-link.active {
     filter: invert(1);
-    transform: scale(1.4);
+    transform: scale(1.1);
 }
 .
