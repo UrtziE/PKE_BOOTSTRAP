@@ -23,7 +23,7 @@ body {
 
 .menu-icon {
     height: 100%;
-    max-height: 50px;
+    max-height: 55px;
     width: auto;
     max-width: 100%;
 
@@ -43,7 +43,7 @@ body {
     border-right: 3px solid rgba(0, 0, 0, 0.24);
 }
 .bottom-nav-blue .nav-link.active {
-    filter: invert(2);
-    font-weight: bold;
+    filter: invert(1);
+    transform: scale(1.4);
 }
 .
