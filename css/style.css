@@ -1,0 +1,99 @@
+/* Importar fuente moderna de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #4e73df; /* Cambia este azul por el color principal de tu marca */
+    --secondary-color: #858796;
+    --bg-color: #f8f9fc;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: #333;
+
+}
+
+.card {
+    border: none;
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: all 0.3s ease-in-out;
+    background: #fff;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Se mueve hacia arriba */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1); /* Sombra más intensa */
+}
+
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    font-weight: 600;
+    padding: 1.25rem;
+}
+
+/* --- BOTONES --- */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(78, 115, 223, 0.2);
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #375ec9;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(78, 115, 223, 0.3);
+}
+
+/* --- FORMS --- */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #e3e6f0;
+    padding: 0.75rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.25);
+    border-color: var(--primary-color);
+}
+.titulo-selekzioa {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #444;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+
+.titulo-selekzioa::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #0d6efd;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+.main-container .row {
+    width: 100%;
+}
