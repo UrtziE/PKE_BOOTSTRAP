@@ -15,15 +15,17 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
     padding: 10px 0;
     transition: all 0.3s ease;
 }
 
 .menu-icon {
-    max-height: 45px;
+    height: 50px;
     width: auto;
+
+    object-fit: contain;
     transition: transform 0.2s;
 
     mix-blend-mode: multiply;
@@ -38,20 +40,8 @@ body {
 .border-end-custom {
     border-right: 3px solid rgba(0, 0, 0, 0.24);
 }
-
-
-
-
-.bottom-nav-blue .nav-link.active .menu-icon {
-
-
-    filter: invert(1);
-
-    mix-blend-mode: normal;
-    transform: scale(1);
+.bottom-nav-blue .nav-link.active {
+    filter: invert(2);
+    font-weight: bold;
 }
-
-
-.bottom-nav-blue .nav-link {
-    transition: all 0.3s ease;
-}
+.
