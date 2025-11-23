@@ -1,5 +1,5 @@
 /* Importar fuente moderna de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 
 :root {
     --primary-color: #4e73df; /* Cambia este azul por el color principal de tu marca */
@@ -90,10 +90,31 @@ body {
     align-items: center;
     height: 100%;
     overflow: hidden;
+
     margin-left: auto;
     margin-right: auto;
     width: 90%;
 }
 .main-container .row {
     width: 100%;
+}
+h1.display-5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    position: relative;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+}
+
+/* El subrayado decorativo */
+h1.display-5::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 5px;
+    background-color: var(--primary-color, #4e73df);
+    margin: 15px auto 0;
+    border-radius: 10px;
 }

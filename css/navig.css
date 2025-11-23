@@ -1,67 +1,65 @@
-/* --- ESTILOS OBLIGATORIOS PARA EL MENÚ INFERIOR --- */
 
 body {
-    /* Importante: Da espacio abajo para que el menú no tape el contenido */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     padding-bottom: 100px;
 }
 
-/* Fondo y color base del menú */
 .bottom-nav-blue {
-    background-color: rgba(147, 146, 147, 0.76); /* Color de fondo */
-    backdrop-filter: blur(10px); /* Efecto borroso opcional tipo iOS */
+    background-color: #f2f2f2;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
 }
 
-/* Estilos generales de los enlaces */
 .bottom-nav-blue .nav-link {
-    color: #ffffff;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    transition: background-color 0.2s ease;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 10px 0;
 }
 
-/* Iconos de Bootstrap dentro del menú */
-.bottom-nav-blue .bi {
-    font-size: 1.5rem; /* Tamaño del icono */
-    display: block;
-    margin-bottom: -5px;
-}
 
-/* Efecto Hover */
-.bottom-nav-blue .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Enlace ACTIVO (Página actual) */
-.bottom-nav-blue .nav-link.active {
-    background-color: rgba(0, 0, 0, 0.15);
-    font-weight: bold;
-    color: #fff;
-}
-
-/* Texto pequeño debajo del icono */
-.bottom-nav-blue .nav-link small {
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
-}
-
-/* Iconos de imagen personalizados (si usas <img> en vez de iconos bootstrap) */
 .menu-icon {
-    max-height: 24px;
-    max-width: 100%;
-    margin-bottom: 4px;
+    max-height: 50px;
+    width: auto;
+    transition: transform 0.2s;
+
+    mix-blend-mode: multiply;
+    opacity: 0.7;
 }
 
-/* --- SEPARADORES VERTICALES --- */
-.bottom-nav-blue .nav-item {
-    flex-grow: 1; /* Reparte el espacio equitativamente */
-    text-align: center;
+.nav-link:hover .menu-icon {
+    transform: scale(1.1);
 }
 
-/* Línea blanca a la derecha de todos MENOS el último */
-.bottom-nav-blue .nav-item:not(:last-child) {
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
+
+.border-end-custom {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.bottom-nav-blue .nav-link.active {
+    background-color: #e2e6ea;
+    border-radius: 15px;
+
+
+    transform: scale(1.15);
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+    border: none;
+}
+
+
+.bottom-nav-blue .nav-link.active .menu-icon {
+
+
+    filter: invert(1);
+
+    mix-blend-mode: normal;
+    transform: scale(1.30);
+}
+
+
+.bottom-nav-blue .nav-link {
+    transition: all 0.3s ease;
 }
