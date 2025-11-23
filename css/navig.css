@@ -34,7 +34,7 @@ body {
 
 
 .border-end-custom {
-    border-right: 1px solid rgba(17, 24, 39, 0.24);
+    border-right: 3px solid rgba(0, 0, 0, 0.24);
 }
 
 .bottom-nav-blue .nav-link.active {
@@ -42,9 +42,9 @@ body {
 
 
 
-    transform: scale(1.10);
+    transform: scale(1.01);
 
-    box-shadow: 0 6px 4px rgba(0,0,0,0.1);
+
 
 }
 
@@ -55,7 +55,7 @@ body {
     filter: invert(1);
 
     mix-blend-mode: normal;
-    transform: scale(1.10);
+    transform: scale(1.1);
 }
 
 
