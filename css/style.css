@@ -9,22 +9,61 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
-    color: #333;
+    background-color: #0a2240;
+    color: #f8f9fa;
 
 }
 
 .card {
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+
+    /* Para que el texto se lea bien, quizás necesites esto: */
+    color: white;
     border: none;
-    border-radius: 12px; /* Bordes más redondeados */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    transition: all 0.3s ease-in-out;
-    background: #fff;
+    border-radius: 12px;
+    overflow: hidden; /* Corta las esquinas de la imagen */
+    height: 100%; /* Asegura que todas las tarjetas midan lo mismo en la fila */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el ratón (opcional) */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Estilo de las imágenes */
+.card-img-top {
+    width: 100%;
+    /* Altura ajustada */
+    height: 250px;
+
+    /* IMPORTANTE: Usa 'contain' para que se vea toda la imagen y no se corte el dibujo */
+    object-fit: contain;
+
+    /* 'darken' suele funcionar mejor que 'multiply' para ilustraciones sobre fondo gris claro.
+       Hace que los píxeles blancos se vuelvan transparentes, pero respeta más los colores oscuros. */
+    padding: 1rem; /* Un poco de aire para que el dibujo no toque los bordes */
+    margin: 0;
+}
+
+/* El texto de la tarjeta */
+.card-body {
+   /* Mismo color que la tarjeta para continuidad */
+    padding: 1.25rem;
+    text-align: center;
+    transition: background 1s ease;
+}
+
+/* Opcional: Al pasar el ratón, el texto se vuelve más blanco */
+.card:hover .card-body {
+    background: linear-gradient(to right, #89f7fe, #66a6ff);
 }
 
 .card:hover {
     transform: translateY(-5px); /* Se mueve hacia arriba */
     box-shadow: 0 12px 24px rgba(0,0,0,0.1); /* Sombra más intensa */
+    background: linear-gradient(to right, #89f7fe, #66a6ff);
 }
 
 .card-header {
@@ -66,7 +105,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #444;
+    color: #f8f9fa;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     position: relative;
@@ -84,6 +123,7 @@ body {
     border-radius: 2px;
 }
 .main-container {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,7 +141,7 @@ body {
 h1.display-5 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    color: #2c3e50;
+    color: #f8f9fa;
     text-align: center;
     position: relative;
     margin-bottom: 2rem;
@@ -117,4 +157,12 @@ h1.display-5::after {
     background-color: var(--primary-color, #4e73df);
     margin: 15px auto 0;
     border-radius: 10px;
+}
+/*Portatilentzat*/
+@media (min-width: 768px) {
+    .card-img-top {
+        height: 300px;
+        object-fit: contain;
+        padding: 1px;
+    }
 }
