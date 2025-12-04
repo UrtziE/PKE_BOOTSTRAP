@@ -8,43 +8,48 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/navig.css">
     <link rel="stylesheet" href="css/style.css">
+
     <style>
-        /* --- ESTILOS GENERALES DE LA PÁGINA --- */
         body, html {
             height: 100%;
             background-color: #f8f9fa;
-
-
         }
 
-
-        .carousel-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 400px;
-            position: relative;
-        }
-
+        /* --- CONTENEDOR DE TARJETAS (MÓVIL) --- */
         .cards-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: column;   /* MOBILE: vertical */
             align-items: center;
-            gap: 10px; 
-            height: 60vh; 
+            gap: 10px;
+            height: 60vh;
             width: 100%;
             overflow-y: auto;
             scroll-behavior: smooth;
             padding: 10px 0;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
-        .cards-container::-webkit-scrollbar { display: none; /* Chrome */ }
+        .cards-container::-webkit-scrollbar { display: none; }
 
-        /* --- ESTILOS DE LAS TARJETAS --- */
+        /* --- VERSION ORDENADOR: HORIZONTAL --- */
+        @media (min-width: 992px) { /* lg en Bootstrap */
+            .cards-container {
+                flex-direction: row !important;   /* horizontal */
+                flex-wrap: wrap !important;        /* salto de línea */
+                justify-content: center;
+                height: auto;                      /* sin scroll */
+                overflow-y: visible;
+                overflow-x: auto;                  /* scroll horizontal si hace falta */
+            }
+
+            .btn-wrapper {
+                display: none !important; /* los botones ↑ ↓ desaparecen en ordenador */
+            }
+        }
+
+        /* --- TARJETAS --- */
         .card {
             width: 240px;
-            height: 300px; 
+            height: 300px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
@@ -56,22 +61,20 @@
             cursor: pointer;
             transition: transform 0.2s;
         }
-        
-        .card:active {
-            transform: scale(0.98);
-        }
+
+        .card:active { transform: scale(0.98); }
 
         .card-img-wrapper {
             height: 65%;
             width: 100%;
-            pointer-events: none; 
+            pointer-events: none;
         }
         .card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
         }
+
         .card-body {
             height: 35%;
             display: flex;
@@ -81,57 +84,43 @@
             padding: 10px;
             pointer-events: none;
         }
-        .card-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #333;
-            line-height: 1.3;
-            margin: 0;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
 
         .card-details {
             display: none;
             width: 240px;
             background-color: #fff;
             border: 1px solid #e0e0e0;
-            border-top: none;
-            border-radius: 0 0 15px 15px;
             padding: 15px;
             font-size: 0.85rem;
-            color: #444;
-            text-align: left;
-            box-shadow: 0 8px 10px rgba(0,0,0,0.05);
-            margin-top: -12px;
-            margin-bottom: 15px; 
-            white-space: pre-line; 
+            margin-bottom: 15px;
+            border-radius: 0 0 15px 15px;
+            white-space: pre-line;
         }
+        @media (min-width: 992px) {
+            .pc-details-panel {
+                width: 80%;
+                max-width: 900px;
+                margin: 30px auto;
+                padding: 20px;
+                background: white;
+                border-radius: 10px;
+                border: 1px solid #ccc;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
 
-        .btn-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-right: 15px;
-        }
-        .btn-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
+            .card-details {
+                display: none !important;
+            }
+}
+
     </style>
 </head>
+
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand"  target="_blank" rel="noopener noreferrer">
+        <a class="navbar-brand">
             <img class="logo"
                  src="https://www.ehu.eus/o/ehu-theme/images/custom/EHU_logotipo_negativo_EUES_horizontal_sinfondo.svg"
                  alt="Universidad del País Vasco"
@@ -139,42 +128,42 @@
         </a>
     </div>
 </nav>
-    <div class="main-container">
-        <div class="text-center mb-4">
-            <h1 class="display-5">Araudia</h1>
-        </div>
 
-        <div class="carousel-wrapper">
-            <div class="btn-wrapper">
-                <button class="btn btn-primary btn-circle" onclick="scrollCards(-1)">&#8593;</button>
-                <button class="btn btn-primary btn-circle" onclick="scrollCards(1)">&#8595;</button>
-            </div>
-
-            <div class="cards-container" id="cards-container">
-                </div>
-        </div>
+<div class="main-container">
+    <div class="text-center mb-4">
+        <h1 class="display-5">Araudia</h1>
     </div>
 
-<div id="menu-container" class="d-none d-sm-block d-md-none"></div>
-<script src="loader-menu.js"></script>
+    <div class="carousel-wrapper d-flex justify-content-center">
 
-    <script>
-        const titulos = [
-          "1. DESKRIBAPEN OROKORRA ETA BETE BEHARRAK",
-          "2. ZEINTZUK DIRA HELBURUAK ETA ZER LANTZEN DA",
-          "3. IZEN-EMATEA ETA DEIALDIAK",
-          "4. LANEN ZUZENDARITZA",
-          "5. GAIAK ETA ESPEZIALITATEA",
-          "6. LANA ESLEITZEA ETA GAIA AUKERATZEA",
-          "7. EBALUAZIO-EPAIMAHAIA",
-          "8. LANAREN AURKEZPENA ETA DEFENTSA",
-          "9. EBALUAZIOA ETA KALIFIKAZIOA",
-          "10. GRADU AMAIERAKO LAN BATZORDEA",
-          "11. ARAUDI HAU EGUNERATZEA"
-        ];
+        <!-- BOTONES (SOLO MÓVIL) -->
+        <div class="btn-wrapper d-block d-lg-none">
+            <button class="btn btn-primary btn-circle" onclick="scrollCards(-1)">&#8593;</button>
+            <button class="btn btn-primary btn-circle" onclick="scrollCards(1)">&#8595;</button>
+        </div>
 
-        // TUS DESCRIPCIONES CON \n
-        const descripciones = {
+        <!-- TARJETAS -->
+        <div class="cards-container" id="cards-container"></div>
+
+    </div>
+</div>
+
+<script>
+    const titulos = [
+      "1. DESKRIBAPEN OROKORRA ETA BETE BEHARRAK",
+      "2. ZEINTZUK DIRA HELBURUAK ETA ZER LANTZEN DA",
+      "3. IZEN-EMATEA ETA DEIALDIAK",
+      "4. LANEN ZUZENDARITZA",
+      "5. GAIAK ETA ESPEZIALITATEA",
+      "6. LANA ESLEITZEA ETA GAIA AUKERATZEA",
+      "7. EBALUAZIO-EPAIMAHAIA",
+      "8. LANAREN AURKEZPENA ETA DEFENTSA",
+      "9. EBALUAZIOA ETA KALIFIKAZIOA",
+      "10. GRADU AMAIERAKO LAN BATZORDEA",
+      "11. ARAUDI HAU EGUNERATZEA"
+    ];
+
+    const descripciones = {
             1: "-Ikasle bakoitzak banaka lan bat egin behar du, zuzendariek gainbegiratuta. \n\n-Gradu amaierako lan bat defendatu eta ebaluatu ahalko da gehienez 3 hautazko irakasgai gainditzea falta direnean, hau da, 3 eta 4 maila artean 18 hautazko kreditu falta zaionean. \n\n-Informatika Ingeniaritzako Graduan, lan hau Gradu Amaierako Lana izena duen derrigorrezko irakasgaiari dagokio eta 12 kredituko lan-karga du",
             2: "Helburu nagusia graduan lortutako gaitasunak sendotzea eta gaitasun horiek praktikan aplikatzeko trebetasunak garatzea da. Horretarako, ikasketetan eta espezialitatean prestakuntza akademikoarekin lotutako arazo bat aztertu, irtenbide egokia diseinatu eta ezarriko da. \n \n Lana egin bitartean, trebetasun hauek garatu eta egiaztatuko dira: \n\n -Lanean proposatutako helburuak lortzea\n\n-Egin beharreko lana planifikatzea eta kudeatzea\n\n-Egindako lanaren memoria idaztea\n\n-Egindako lana jendaurrean aurkeztea",
             3: "-Lanaren matrikula beste irakasgai baten modu berdinean matrikula orokorrean aukeratzen da\n\n-Matrikulak ikasturte bakoitzean bi deialdi ofizial egiteko eskubidea emango du. Ebaluatuak izan ez diren edo ikasturterako ezarritako deialdietan beren lana defendatu ez duten ikasleak berriro matrikulatu beharko dira\n\n-Ikasleek GAL-aren hizkuntza aukeratuko dute matrikula egiterakoan",
@@ -185,80 +174,67 @@
             9: "Kalifikazioa 0-10 bitartean izango da. “Ohorezko Matrikularen” aipamena epaimahaiak proposatutako lanei eman ahal izango zaie, baldin eta 9ko kalifikazioa edo handiagoa badute\n\nSuspendituz gero, epaimahaiak txosten bat osatuko du lana hobetzeko gomendioekin aurrerago berriz kalifikatua izateko",
             10: "Fakultatean GAL-en Batzorde bat egongo da, GAL-ari buruzko hainbat irizpide eta dokumentu zehazteko.",
             11: "GAL-aren Lan batzordeak araudi honetan aldaketak proposa ditzake eta Zentroko Batzordeak onar ditzan. Aldaketa hauek onartuz gero, hurrengo ikasturtean aplikatuko lirateke."
-
         };
 
-        const totalCards = titulos.length;
-        const cardsContainer = document.getElementById('cards-container');
+    const cardsContainer = document.getElementById('cards-container');
 
-        for (let i = 0; i < totalCards; i++) {
-            const id = i + 1;
-            
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.id = `card-${id}`;
-            card.onclick = () => toggleDescription(id, card);
+    titulos.forEach((t, i) => {
+        const id = i + 1;
 
-            card.innerHTML = `
-                <div class="card-img-wrapper">
-                    <img src="img/artikulu${id}.png" alt="Artikulua ${id}">
-                </div>
-                <div class="card-body">
-                    <p class="card-title">${titulos[i]}</p>
-                </div>
-            `;
+        const card = document.createElement("div");
+        card.className = "card";
+        card.onclick = () => toggleDescription(id);
 
-            const details = document.createElement('div');
-            details.className = 'card-details';
-            details.id = `details-${id}`;
-            
-            details.innerHTML = descripciones[id] || ("Ez dago informaziorik eskuragarri artikulu honetarako (" + id + ").");
+        card.innerHTML = `
+            <div class="card-img-wrapper">
+                <img src="img/artikulu${id}.png">
+            </div>
+            <div class="card-body">
+                <p class="card-title">${t}</p>
+            </div>
+        `;
 
-            cardsContainer.appendChild(card);
-            cardsContainer.appendChild(details);
-        }
+        const details = document.createElement("div");
+        details.className = "card-details";
+        details.id = `details-${id}`;
+        details.innerHTML = descripciones[id] || "Ez dago informaziorik.";
 
-        function toggleDescription(id, cardElement) {
-            const detailsDiv = document.getElementById(`details-${id}`);
-            const isVisible = detailsDiv.style.display === 'block';
+        cardsContainer.appendChild(card);
+        cardsContainer.appendChild(details);
+    });
 
-            if (isVisible) {
-                detailsDiv.style.display = 'none';
-                cardElement.style.borderRadius = "15px";
-            } else {
-                detailsDiv.style.display = 'block';
-                cardElement.style.borderRadius = "15px 15px 0 0"; 
-                
-                setTimeout(() => {
-                    detailsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 100);
-            }
-        }
+    function toggleDescription(id) {
+    const isPC = window.innerWidth >= 992;
 
-        function scrollCards(direction) {
-            const cardHeight = 320; 
-            cardsContainer.scrollBy({ top: direction * cardHeight, behavior: 'smooth' });
-        }
-        
-        let isDragging = false;
-        let startY, scrollStart;
-        cardsContainer.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startY = e.pageY - cardsContainer.offsetTop;
-            scrollStart = cardsContainer.scrollTop;
-            cardsContainer.style.cursor = 'grabbing';
-        });
-        cardsContainer.addEventListener('mouseup', () => { isDragging = false; cardsContainer.style.cursor = 'default'; });
-        cardsContainer.addEventListener('mouseleave', () => isDragging = false);
-        cardsContainer.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const y = e.pageY - cardsContainer.offsetTop;
-            const walk = (startY - y) * 1.5;
-            cardsContainer.scrollTop = scrollStart + walk;
-        });
-    </script>
+    const title = titulos[id - 1];
+    const text = descripciones[id] || "Ez dago informaziorik.";
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    if (isPC) {
+        // MODO PC → mostrar en panel fijo
+        document.getElementById("pc-details-title").innerText = title;
+        document.getElementById("pc-details-text").innerText = text;
+        return;
+    }
+
+    // MODO MÓVIL → comportamiento original
+    const details = document.getElementById(`details-${id}`);
+    details.style.display = details.style.display === "block" ? "none" : "block";
+}
+
+
+    function scrollCards(direction) {
+        cardsContainer.scrollBy({ top: direction * 320, behavior: "smooth" });
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ordenagailua bakarrik -->
+<div id="pc-details-panel" class="pc-details-panel d-none d-lg-block">
+    <h4 id="pc-details-title"></h4>
+    <p id="pc-details-text"></p>
+</div>
+
+
 </body>
 </html>
