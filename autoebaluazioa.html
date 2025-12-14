@@ -19,16 +19,8 @@
 
 <body >
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand"  target="_blank" rel="noopener noreferrer">
-            <img class="logo"
-                 src="https://www.ehu.eus/o/ehu-theme/images/custom/EHU_logotipo_negativo_EUES_horizontal_sinfondo.svg"
-                 alt="Universidad del País Vasco"
-                 height="40">
-        </a>
-    </div>
-</nav>
+<div id="menu-pc-container"></div>
+
 
   <div class="main-container mt-5">
     <div class="row">
@@ -162,16 +154,24 @@
           </div>
 
           <!-- Pregunta 10 -->
-          <div class="mb-3 question">
-            <label class="form-label">🔟 Lan mota adostutakoan, zein izango da lanaren zuzendaria?</label>
-            <select class="form-select" required>
-              <option value="">Aukeratu bat</option>
-              <option>Ausazko irakasle bat</option>
-              <option>Enpresako langileak</option>
-              <option>Adostatuko irakaslea</option>
-            </select>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
+            <!-- Pregunta 10 - CORREGIDA -->
+            <div class="mb-3 question">
+                <label class="form-label">🔟 Lan mota adostutakoan, zein izango da lanaren zuzendaria? (Aukeratu zuzenak)</label>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="q10" value="Ausazko irakasle bat">
+                    <label class="form-check-label">Ausazko irakasle bat</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="q10" value="Enpresako langileak">
+                    <label class="form-check-label">Enpresako langileak</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="q10" value="Adostatuko irakaslea">
+                    <label class="form-check-label">Adostatuko irakaslea</label>
+                </div>
+                <div class="respuesta-correcta d-none"></div>
+            </div>
 
           <!-- Pregunta 11 -->
           <div class="mb-3 question">
@@ -196,90 +196,99 @@
   </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("galForm");
-  const emaitza = document.getElementById("emaitza");
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("galForm");
+        const emaitza = document.getElementById("emaitza");
 
-  // Respuestas correctas
-  const correct = [
-    "2 deialdi",
-    "Bai",
-    ["Lehendakaria", "Lanaren zuzendaria", "Orientatzailea"],
-    "Bai, baina baldintza batzuk",
-    "12",
-    "60",
-    "Bai, 30m",
-    "Epaimahiak txosten bat osatuko du lana hobetzeko gomendioekin",
-    "Bai",
-    ["Enpresako langileak", "Adostatuko irakaslea"],
-    "9 edo gehiago"
-  ];
+        // Respuestas correctas
+        const correctAnswers = [
+            "2 deialdi", // Pregunta 1
+            "Bai", // Pregunta 2
+            ["Lehendakaria", "Gaiaren inguruan ezagutzak dituen irakaslea edo kidea"], // Pregunta 3 (Corregido para que sea más preciso)
+            "Bai, baina baldintza batzuk bete behar dira.", // Pregunta 4 ¡CORREGIDO! El texto debe ser exacto.
+            "12", // Pregunta 5
+            "60", // Pregunta 6
+            "Bai, 30m", // Pregunta 7
+            "Epaimahiak txosten bat osatuko du lana hobetzeko gomendioekin", // Pregunta 8
+            "Bai", // Pregunta 9
+            ["Enpresako langileak", "Adostatuko irakaslea"], // Pregunta 10 (ahora funciona con checkboxes)
+            "9 edo gehiago" // Pregunta 11
+        ];
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let score = 0;
-    const now = new Date().toLocaleString();
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let score = 0;
+            const now = new Date().toLocaleString();
 
+            const questions = form.querySelectorAll(".question");
 
-// Guardar como cadena JSON
+            questions.forEach((questionDiv, index) => {
+                const correctAnswer = correctAnswers[index];
+                const feedbackDiv = questionDiv.querySelector(".respuesta-correcta");
+                feedbackDiv.classList.remove("d-none");
 
+                const select = questionDiv.querySelector("select");
+                const radios = questionDiv.querySelectorAll("input[type='radio']");
+                const checkboxes = questionDiv.querySelectorAll("input[type='checkbox']");
 
-    
-    const questions = form.querySelectorAll(".question");
-    questions.forEach((q, index) => {
-      const type = q.querySelector("select") ? "select" : (q.querySelector("input[type='radio'], input[type='checkbox']") ? "input" : null);
-      const respDiv = q.querySelector(".respuesta-correcta");
-      respDiv.classList.remove("d-none");
-      
-      if (type === "select") {
-        const val = q.querySelector("select").value;
-        if (Array.isArray(correct[index])) {
-          // para preguntas 10 que tienen varias respuestas correctas
-          respDiv.textContent = `❌ Erantzun zuzena: ${correct[index].join(", ")}`;
-        } else if (val === correct[index]) {
-          q.querySelector("select").classList.add("correct");
-          q.querySelector("select").classList.remove("incorrect");
-          respDiv.textContent = "✅ Zure erantzuna zuzena!";
-          score++;
-        } else {
-          q.querySelector("select").classList.add("incorrect");
-          q.querySelector("select").classList.remove("correct");
-          respDiv.textContent = `❌ Erantzun zuzena: ${correct[index]}`;
-        }
-      } else if (type === "input") {
-        const inputs = Array.from(q.querySelectorAll("input"));
-        const checked = inputs.filter(i => i.checked).map(i => i.value);
-        const c = correct[index];
-        let correctFlag = false;
-        if (Array.isArray(c)) {
-          correctFlag = c.every(val => checked.includes(val)) && checked.length === c.length;
-        } else {
-          correctFlag = checked[0] === c;
-        }
-        inputs.forEach(i => {
-          if (checked.includes(i.value)) {
-            i.nextElementSibling.classList.remove("correct","incorrect");
-            i.nextElementSibling.classList.add(correctFlag ? "correct":"incorrect");
-          }
+                let isCorrect = false;
+
+                // Lógica para <select>
+                if (select) {
+                    isCorrect = select.value === correctAnswer;
+                    select.classList.toggle("correct", isCorrect);
+                    select.classList.toggle("incorrect", !isCorrect);
+                    feedbackDiv.textContent = isCorrect ? "✅ Zure erantzuna zuzena!" : `❌ Erantzun zuzena: ${correctAnswer}`;
+                }
+
+                // Lógica para <input type="radio">
+                else if (radios.length > 0) {
+                    const checkedValue = [...radios].find(r => r.checked)?.value;
+                    isCorrect = checkedValue === correctAnswer;
+                    feedbackDiv.textContent = isCorrect ? "✅ Zure erantzuna zuzena!" : `❌ Erantzun zuzena: ${correctAnswer}`;
+                    // Opcional: añadir feedback visual a los radios
+                    [...radios].forEach(r => {
+                        r.parentElement.classList.remove("correct", "incorrect");
+                        if (r.checked) {
+                            r.parentElement.classList.add(isCorrect ? "correct" : "incorrect");
+                        }
+                    });
+                }
+
+                // Lógica para <input type="checkbox">
+                else if (checkboxes.length > 0) {
+                    const checkedValues = [...checkboxes].filter(c => c.checked).map(c => c.value);
+                    // Comprueba si los arrays son idénticos (mismos elementos, sin importar el orden)
+                    isCorrect = correctAnswer.length === checkedValues.length && correctAnswer.every(val => checkedValues.includes(val));
+
+                    feedbackDiv.textContent = isCorrect ? "✅ Zure erantzuna zuzena!" : `❌ Erantzun zuzena: ${correctAnswer.join(", ")}`;
+                    // Opcional: añadir feedback visual a los checkboxes
+                    [...checkboxes].forEach(c => {
+                        c.parentElement.classList.remove("correct", "incorrect");
+                        if (c.checked) {
+                            c.parentElement.classList.add(isCorrect ? "correct" : "incorrect");
+                        }
+                    });
+                }
+
+                if (isCorrect) score++;
+            });
+
+            const resultados = {
+                fecha: now,
+                puntuacion: score,
+                total: correctAnswers.length
+            };
+
+            emaitza.textContent = `📊 Emaitza: ${score}/${correctAnswers.length} galdera ondo erantzunda.`;
+            localStorage.setItem("ultimos_resultados_gal", JSON.stringify(resultados));
+            emaitza.classList.remove("d-none");
         });
-        respDiv.textContent = correctFlag ? "✅ Zure erantzuna zuzena!" : `❌ Erantzun zuzena: ${Array.isArray(c)? c.join(", "): c}`;
-        if(correctFlag) score++;
-      }
     });
-    const resultados = {
-  fecha: now,
-  puntuacion: score,
-  total: correct.length
-};
-
-    emaitza.textContent = `📊 Emaitza: ${score}/${correct.length} galdera ondo erantzunda.`;
-    localStorage.setItem("ultimos_resultados_gal", JSON.stringify(resultados));
-
-    emaitza.classList.remove("d-none");
-  });
-});
 </script>
 <div id="menu-container" class="d-block d-md-none"></div>
 <script src="loader-menu.js"></script>
+<script src="theme.js"></script>
+
 </body>
 </html>

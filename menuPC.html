@@ -1,0 +1,55 @@
+<header>
+    <nav class="navbar fixed-top custom-navbar">
+        <div class="container d-flex align-items-center">
+
+            <!-- 1. LOGO (BETI IKUSGAI: EZKERREAN) -->
+            <a class="navbar-brand me-auto" href="index.html">
+                <img class="logo" src="https://www.ehu.eus/o/ehu-theme/images/custom/EHU_logotipo_negativo_EUES_horizontal_sinfondo.svg" alt="UPV/EHU" height="40">
+            </a>
+
+            <!-- 2. MENUKO ESTEKAK (SOILIK PC-AN IKUSGAI) -->
+            <!-- 'd-none': Ezkutatu beti -->
+            <!-- 'd-lg-block': Baina pantaila handietan erakutsi bloke bezala -->
+            <div class="d-none d-md-block">
+                <ul class="navbar-nav d-flex flex-row gap-3"> <!-- flex-row: horizontalki jartzeko -->
+                    <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="araudia.html">ARAUDIA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="egutegia.html">EGUTEGIA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gral.html">GRAL</a></li>
+                    <li class="nav-item"><a class="nav-link" href="autoebaluazioa.html">AUTOEBALUAZIOA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">ABOUT US</a></li>
+                </ul>
+            </div>
+
+            <!-- 3. GAIEN MENUA (BETI IKUSGAI: ESKUINEAN) -->
+            <div class="dropdown ms-3">
+                <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center" type="button" id="themeDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--text-main); text-decoration: none;">
+                    <i class="bi bi-palette-fill me-2"></i>
+                    <span class="d-none d-sm-inline">Itxura</span>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="themeDropdown" style="background-color: var(--bg-card); border-color: var(--border-color);">
+                    <!-- 1. AUKERA: ILUNA -->
+                    <li>
+                        <button class="dropdown-item d-flex align-items-center" onclick="setSpecificMode('iluna')" style="color: var(--text-main);">
+                            Iluna
+                        </button>
+                    </li>
+                    <!-- 2. AUKERA: ARGIA -->
+                    <li>
+                        <button class="dropdown-item d-flex align-items-center" onclick="setSpecificMode('argia')" style="color: var(--text-main);">
+                             Argia
+                        </button>
+                    </li>
+                    <!-- 3. AUKERA: URDINA -->
+                    <li>
+                        <button class="dropdown-item d-flex align-items-center" onclick="setSpecificMode('urdina')" style="color: var(--text-main);">
+                             Urdina
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>

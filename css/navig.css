@@ -1,80 +1,63 @@
-/* --- CONTENEDOR PRINCIPAL --- */
+/* --- navbar.css EGUNERATUA --- */
+
 .bottom-nav-blue {
-    background-color: #132e52;
-    backdrop-filter: blur(5px);
-
-    /* Borde superior sutil */
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-
+    /* ERALDACIOA: --nav-bg ordez --bg-card erabiltzen dugu, gaiarekin bat etortzeko */
+    background-color: var(--bg-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border-color); /* --nav-border ordez --border-color */
+    height: 75px;
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
-    height: 70px;
-    z-index: 1050;
-
-    padding: 0;
-    display: flex;
+    z-index: 1000;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-/* --- LAS CELDAS (BOTONES) --- */
+/* Estekak */
 .bottom-nav-blue .nav-link {
-    flex: 1;
-    height: 100%;
-
-    /* Centrado */
     display: flex;
+    flex-direction: column;
+    height: 100%;
     justify-content: center;
     align-items: center;
-
     padding: 0 !important;
-    margin: 0;
-    border-radius: 0; /* Cuadrados perfectos */
-
-
-    border-right: 1px solid rgba(0, 0, 0, 1);
-
-
-    border-top: 4px solid transparent;
-
-    position: relative;
     transition: all 0.3s ease;
-}
-.bottom-nav-blue .nav-link:first-child {
+    border-top: 3px solid transparent;
 
-    filter:invert(1);
-}
-
-.bottom-nav-blue .nav-link:last-child {
-    border-right: none;
-    filter:invert(1);
+    /* ERALDAKETAK: */
+    color: var(--text-sec); /* --text-muted ordez */
+    text-decoration: none;
 }
 
-/* --- ICONOS --- */
+/* Borde bertikala */
+.bottom-nav-blue .border-end {
+    border-color: var(--border-color) !important;
+}
+
+/* Hover */
+.bottom-nav-blue .nav-link:not(.active):hover {
+    background-color: var(--bg-color); /* --nav-hover ordez hondo orokorra */
+    color: var(--accent-color);        /* --primary-color ordez */
+}
+
+/* Ikonoak */
 .menu-icon {
-    height: 55px; /* Tamaño ajustado para que no se vea gigante */
+    height: 32px;
     width: auto;
     object-fit: contain;
-
-    opacity: 0.5; /* Un poco apagados si no están activos */
-
-    transition: transform 0.2s ease;
-    /* QUITAMOS EL BACKGROUND DE AQUÍ */
-    background-color: transparent !important;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* --- ESTADO ACTIVO (SELECCIONADO) --- */
+/* Aktiboa (Active) */
 .bottom-nav-blue .nav-link.active {
-
-    border-top: 4px solid #66a6ff;
-
-
+    /* Atzealde pixka bat ilunagoa/argiagoa aktibo dagoenean */
+    background-color: var(--bg-color);
+    border-top-color: var(--accent-color); /* --primary-color ordez */
+    color: var(--accent-color);
 }
 
-/* Efecto en el icono activo */
 .bottom-nav-blue .nav-link.active .menu-icon {
-    opacity: 1;
-    transform: scale(1.15);
-    background: linear-gradient(to top, #FFFFFF 0%, #EFD7B7 100%);
+    transform: translateY(-4px) scale(1.1);
 }
-

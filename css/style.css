@@ -1,168 +1,400 @@
-/* Importar fuente moderna de Google Fonts */
-
-
-:root {
-    --primary-color: #4e73df; /* Cambia este azul por el color principal de tu marca */
-    --secondary-color: #858796;
-    --bg-color: #f8f9fc;
-}
-
+/* =========================================
+   1. CONFIGURACIÓN BASE Y TRANSICIONES
+   ========================================= */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #0a2240;
-    color: #f8f9fa;
+    /* Asignamos las variables a las propiedades CSS reales */
+    padding-top: 80px;
+    background-color: var(--bg-color);
+    color: var(--text-main);
 
+    /* Transición suave al cambiar de tema (0.3s) */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-.card {
-    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-
-    /* Para que el texto se lea bien, quizás necesites esto: */
-    color: white;
-    border: none;
-    border-radius: 12px;
-    overflow: hidden; /* Corta las esquinas de la imagen */
-    height: 100%; /* Asegura que todas las tarjetas midan lo mismo en la fila */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efecto al pasar el ratón (opcional) */
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* Estilo de las imágenes */
-.card-img-top {
-    width: 100%;
-    /* Altura ajustada */
-    height: 250px;
-
-    /* IMPORTANTE: Usa 'contain' para que se vea toda la imagen y no se corte el dibujo */
-    object-fit: contain;
-
-    /* 'darken' suele funcionar mejor que 'multiply' para ilustraciones sobre fondo gris claro.
-       Hace que los píxeles blancos se vuelvan transparentes, pero respeta más los colores oscuros. */
-    padding: 1rem; /* Un poco de aire para que el dibujo no toque los bordes */
-    margin: 0;
-}
-
-/* El texto de la tarjeta */
-.card-body {
-   /* Mismo color que la tarjeta para continuidad */
-    padding: 1.25rem;
-    text-align: center;
-    transition: background 1s ease;
-}
-
-/* Opcional: Al pasar el ratón, el texto se vuelve más blanco */
-.card:hover .card-body {
-    background: linear-gradient(to right, #89f7fe, #66a6ff);
-}
-
-.card:hover {
-    transform: translateY(-5px); /* Se mueve hacia arriba */
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1); /* Sombra más intensa */
-    background: linear-gradient(to right, #89f7fe, #66a6ff);
-}
-
-.card-header {
-    background-color: transparent;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    font-weight: 600;
-    padding: 1.25rem;
-}
-
-/* --- BOTONES --- */
-.btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    padding: 0.6rem 1.5rem;
-    border-radius: 8px;
+/* Aplicar variables a elementos comunes */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
     font-weight: 500;
-    box-shadow: 0 4px 6px rgba(78, 115, 223, 0.2);
-    transition: all 0.3s;
 }
 
-.btn-primary:hover {
-    background-color: #375ec9;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 12px rgba(78, 115, 223, 0.3);
+a:hover {
+    filter: brightness(1.1); /* Brilla un poco al pasar el ratón */
+    text-decoration: underline;
 }
 
-/* --- FORMS --- */
-.form-control {
-    border-radius: 8px;
-    border: 1px solid #e3e6f0;
-    padding: 0.75rem;
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-main);
 }
 
-.form-control:focus {
-    box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.25);
-    border-color: var(--primary-color);
-}
-.titulo-selekzioa {
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #f8f9fa;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    display: inline-block;
+p, li, span {
+    color: var(--text-sec); /* Texto secundario para párrafos largos para menos fatiga */
 }
 
-
-.titulo-selekzioa::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background-color: #0d6efd;
-    margin: 10px auto 0;
-    border-radius: 2px;
+/* Bordes y líneas divisorias */
+hr, .border, .border-top, .border-bottom {
+    border-color: var(--border-color) !important;
 }
-.main-container {
 
+/* Tarjetas (Cards) - Calculamos un fondo ligeramente distinto para dar profundidad */
+.card, .navbar, .bottom-nav-blue, .portatil-details-panel {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-main) !important;
+}
+
+/* =========================================
+   2. PALETA 1: NEUTRA Y CLÁSICA (Default)
+   ========================================= */
+/* MODO CLARO (Por defecto si pones class="theme-neutral") */
+body.theme-neutral {
+    --bg-color: #F8F9FA;      /* Gris muy claro */
+    --bg-card: #FFFFFF;       /* Blanco puro para tarjetas */
+    --text-main: #212529;     /* Gris muy oscuro */
+    --text-sec: #495057;      /* Gris medio */
+    --accent-color: #0A66C2;  /* Azul profesional (LinkedIn style) */
+    --border-color: #CED4DA;
+}
+
+/* MODO OSCURO */
+body.theme-neutral.dark-mode {
+    --bg-color: #121416;      /* Casi negro */
+    --bg-card: #1E2022;       /* Un poco más claro para tarjetas */
+    --text-main: #E4E6EB;     /* Blanco roto */
+    --text-sec: #B0B3B8;      /* Gris claro */
+    --accent-color: #2A79FF;  /* Azul brillante */
+    --border-color: #2E3033;
+}
+
+/* =========================================
+   3. PALETA 2: AZUL SUAVE (Concentración)
+   ========================================= */
+
+
+/* MODO OSCURO */
+body.theme-blue {
+    --bg-color: #0F172A;      /* Azul noche profundo */
+    --bg-card: #1E293B;       /* Azul noche medio (Slate 800) */
+    --text-main: #E2E8F0;     /* Blanco azulado */
+    --text-sec: #94A3B8;      /* Gris azulado */
+    --accent-color: #3B82F6;  /* Azul eléctrico suave */
+    --border-color: #334155;
+}
+
+/* =========================================
+   4. PALETA 3: CÁLIDA (Lectura acogedora)
+   ========================================= */
+body.theme-warm {
+    --bg-color: #FFFCF7;      /* Crema / Blanco cálido */
+    --bg-card: #FFF8E1;       /* Crema un poco más intenso */
+    --text-main: #2C2C2C;     /* Gris cálido oscuro */
+    --text-sec: #5A5A5A;      /* Gris cálido medio */
+    --accent-color: #D97706;  /* Naranja suave */
+    --border-color: #E5E7EB;
+}
+
+/* MODO OSCURO */
+body.theme-warm.dark-mode {
+    --bg-color: #1A1B1D;      /* Marrón/Gris muy oscuro */
+    --bg-card: #252628;       /* Elevación */
+    --text-main: #E8E6E3;     /* Beige muy claro */
+    --text-sec: #A3A1A0;      /* Beige grisáceo */
+    --accent-color: #F59E0B;  /* Ambar */
+    --border-color: #2E2F31;
+}
+
+/* =========================================
+   5. PALETA 4: SEPIA (Lectura intensiva)
+   ========================================= */
+/* El modo sepia suele ser único (no tiene dark mode per se, es un modo en sí mismo) */
+body.theme-sepia {
+    --bg-color: #F4ECD8;      /* Papel antiguo */
+    --bg-card: #E9E1CC;       /* Un poco más oscuro para diferenciar */
+    --text-main: #3B3A32;     /* Tinta oscura */
+    --text-sec: #5C5B52;      /* Tinta diluida */
+    --accent-color: #A67C52;  /* Marrón cuero */
+    --border-color: #D9D2C0;
+}
+
+/* Barra de navegación superior personalizada */
+.custom-navbar {
+    background-color: var(--nav-bg); /* Usa la variable del tema actual */
+    backdrop-filter: blur(10px);     /* Efecto cristal */
+    border-bottom: 1px solid var(--nav-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Enlaces del menú */
+.custom-navbar .nav-link {
+    color: var(--text-main) !important; /* El color se adapta (blanco en oscuro, negro en claro) */
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.custom-navbar .nav-link:hover {
+    color: var(--accent-color) !important; /* Color de acento al pasar el ratón */
+}
+
+/* Ajustes del Dropdown para que coincida con el tema */
+.dropdown-item:hover {
+    background-color: var(--bg-color); /* Fondo suave al pasar el ratón */
+    color: var(--accent-color) !important;
+}
+/* =========================================
+   6. ARAUDIA ORRIALDEKO ESTILOAK (UPDATED)
+   ========================================= */
+
+.araudia-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100%;
-    overflow: hidden;
-
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
+    padding-top: 20px;
 }
-.main-container .row {
+
+/* --- KARTEN EDUKIONTZIA --- */
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     width: 100%;
-}
-h1.display-5 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    color: #f8f9fa;
-    text-align: center;
-    position: relative;
-    margin-bottom: 2rem;
-    letter-spacing: -1px;
+    height: 70vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0 80px 0;
+    scrollbar-width: none;
 }
 
-/* El subrayado decorativo */
-h1.display-5::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 5px;
-    background-color: var(--primary-color, #4e73df);
-    margin: 15px auto 0;
-    border-radius: 10px;
-}
-/*Portatilentzat*/
+.cards-container::-webkit-scrollbar { display: none; }
+
 @media (min-width: 768px) {
-    .card-img-top {
-        height: 300px;
-        object-fit: contain;
-        padding: 1px;
+    .cards-container {
+        padding: 20px;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center;
+        height: auto;
+        overflow-y: visible;
+    }
+    .btn-wrapper {
+        display: none !important;
+    }
+}
+
+/* --- KARTA INDIBIDUALAK --- */
+.cards-container .card {
+    width: 240px;
+    height: 300px;
+    flex-shrink: 0;
+    cursor: pointer;
+
+    /* ERALDAKETAK: Aldagai berriak ziurtatu */
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border-color); /* Borde leuna gehitu dugu */
+}
+
+.cards-container .card:active {
+    transform: scale(0.98);
+}
+
+.card-img-wrapper {
+    height: 65%;
+    width: 100%;
+    pointer-events: none;
+    /* Irudiaren hondoa pixka bat aldatu gaiaren arabera */
+    background-color: var(--bg-color);
+    opacity: 0.9;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cards-container .card-body {
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    pointer-events: none;
+    color: var(--text-main); /* --card-text ordez */
+    font-weight: 500;
+}
+
+/* --- XEHETASUN PANELA --- */
+.card-details {
+    display: none;
+    width: 240px;
+    background-color: var(--bg-card);
+    color: var(--text-sec); /* --text-muted ordez */
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    border-radius: 0 0 15px 15px;
+    white-space: pre-line;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 768px) {
+    .portatil-details-panel {
+        width: 100%;
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 30px;
+        background-color: var(--bg-card);
+        color: var(--text-main);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        min-height: 200px;
+    }
+
+    .portatil-details-panel h3,
+    .portatil-details-panel h4 {
+        color: var(--accent-color); /* --primary-color ordez */
+        margin-bottom: 1rem;
+    }
+
+    .card-details {
+        display: none !important;
+    }
+
+    /* =========================================
+   7. EGUTEGIA ORRIALDEKO ESTILOAK
+   ========================================= */
+
+    /* Edukiontzi nagusia zentratzeko (Flexbox) */
+    /* Honek 'style.css'-ko .main-container orokorra gainidazten du orrialde honetarako */
+    body.egutegia-page .main-container, /* Aukera 1: body-ari klase bat gehitzen badiozu */
+    .main-container {                   /* Aukera 2: Orrialde guztietan zentratu nahi baduzu */
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Bertikalki erdian */
+        align-items: center;     /* Horizontalki erdian */
+        padding-bottom: 20px;
+    }
+
+    /* Egutegiaren kaxa nagusia */
+    .calendar-wrapper {
+        width: 90%;
+        max-width: 600px;
+        background: var(--bg-card); /* Aldagaia! */
+        color: var(--text-main);    /* Aldagaia! */
+
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+
+        /* Altuera moldagarria */
+        height: 70vh;
+        max-height: 800px;
+        overflow: hidden;
+
+        border: 1px solid var(--border-color); /* Aldagaia! */
+    }
+
+    /* Pestainak (Tabs) */
+    .nav-pills {
+        padding: 15px 15px 0 15px;
+        border-bottom: 1px solid var(--border-color);
+        justify-content: center;
+    }
+
+    .nav-pills .nav-link {
+        color: var(--text-sec); /* Aldagaia! */
+        font-weight: 600;
+        border-radius: 20px;
+        margin: 0 5px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-pills .nav-link:hover {
+        background-color: var(--bg-body);
+    }
+
+    .nav-pills .nav-link.active {
+        background-color: var(--accent-color); /* Aldagaia (Urdina/Gorria...) */
+        color: white; /* Hau beti zuria izatea komeni da kontrasteagatik */
+    }
+
+    /* Edukia (Scroll gunea) */
+    .tab-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px;
+        scrollbar-width: none; /* Firefox */
+    }
+    .tab-content::-webkit-scrollbar { display: none; /* Chrome */ }
+
+    /* Zereginen Txartelak (Task Cards) */
+    .task-card {
+        background-color: var(--bg-body); /* Hondoa pixka bat ilunagoa/argiagoa */
+        border: 1px solid var(--border-color);
+        border-left: 4px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    /* Tituluak eta testuak */
+    .task-title {
+        font-weight: 700;
+        color: var(--text-main);
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .task-number {
+        background-color: rgba(13, 110, 253, 0.1); /* Hau finko utzi dezakegu edo aldatu */
+        color: var(--accent-color);
+        padding: 2px 8px;
+        border-radius: 5px;
+        margin-right: 10px;
+        font-size: 0.85rem;
+    }
+
+    /* Data lerroak */
+    .date-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+        border-bottom: 1px dashed var(--border-color);
+        padding-bottom: 4px;
+    }
+
+    .date-row:last-child {
+        border-bottom: none;
+    }
+
+    .date-label {
+        color: var(--text-sec);
+        font-weight: 500;
+    }
+
+    .date-value {
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+    /* Alerta kutxa */
+    .info-alert {
+        font-size: 0.85rem;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        /* Bootstrapek bere koloreak ditu alertetarako,
+           baina nahi baduzu hemen pertsonalizatu dezakezu */
     }
 }

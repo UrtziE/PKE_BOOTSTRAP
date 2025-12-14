@@ -1,35 +1,46 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Cargar el menú
-    fetch('menu.html')
-        .then(response => response.text())
-        .then(data => {
-            // Insertar el HTML del menú en el contenedor
-            document.getElementById('menu-container').innerHTML = data;
 
-            // 2. Iluminar el botón activo automáticamente
+    function loadMenu(url, containerId) {
+        return fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error(`No se pudo cargar ${url}`);
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById(containerId).innerHTML = data;
+            });
+    }
+
+    // Usamos Promise.all para cargar ambos menús en paralelo
+    Promise.all([
+        loadMenu('menuPC.html', 'menu-pc-container'),
+        loadMenu('menu.html', 'menu-container')
+    ])
+        .then(() => {
             highlightActiveLink();
         })
-        .catch(error => console.error('Error cargando el menú:', error));
+        .catch(error => console.error('Error cargando los menús:', error));
 });
 
 function highlightActiveLink() {
-    // Obtenemos el nombre del archivo actual (ej: araudia.html)
     let path = window.location.pathname;
     let page = path.split("/").pop();
-
-    // Si es la raíz (carpeta vacía), asumimos que es index.html
     if (page === "") page = "index.html";
 
-    // Buscamos todos los enlaces del menú recién cargado
-    const links = document.querySelectorAll('.bottom-nav-blue .nav-link');
+    // ¡CORRECCIÓN! El selector ahora busca en AMBOS menús.
+    // Selecciona todos los .nav-link dentro de los contenedores de menú.
+    const links = document.querySelectorAll('#menu-pc-container .nav-link, #menu-container .nav-link');
 
     links.forEach(link => {
-        // Obtenemos el href del enlace (ej: araudia.html)
         const href = link.getAttribute('href');
 
-        // Si el href coincide con la página actual...
+        // Limpiamos la clase 'active' de todos los enlaces primero
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
+
+        // Si el href coincide, añadimos la clase 'active'
         if (href === page) {
-            link.classList.add('active'); // Añadimos la clase active
+            link.classList.add('active');
             link.setAttribute('aria-current', 'page');
         }
     });
