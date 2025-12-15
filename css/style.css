@@ -6,7 +6,7 @@
     --bg-card: #FFFFFF;
     --text-main: #212529;
     --text-sec: #495057;
-    --accent-color: #0A66C2;
+    --accent-color: #0A66C2; /* AZUL en modo claro */
     --border-color: #CED4DA;
     --nav-bg: #000000;
     --nav-border: #333333;
@@ -55,19 +55,22 @@ hr, .border, .border-top, .border-bottom {
 }
 
 /* =========================================
-   2. TEMAS (Gaiak)
+   2. PALETA 1: NEUTRA (Argia / Iluna)
    ========================================= */
+
+/* MODO CLARO (Por defecto) */
 body.theme-neutral {
     --bg-color: #F8F9FA;
     --bg-card: #FFFFFF;
     --text-main: #212529;
     --text-sec: #495057;
-    --accent-color: #0A66C2;
+    --accent-color: #0A66C2; /* AZUL */
     --border-color: #CED4DA;
     --nav-bg: #000000;
     --nav-border: #333333;
 }
 
+/* Barra negra forzada en modo CLARO */
 body.theme-neutral .custom-navbar {
     background-color: #000000 !important;
     border-bottom: 3px solid #333333 !important;
@@ -102,22 +105,30 @@ body.theme-neutral .dropdown-menu .dropdown-item:hover {
     color: var(--accent-color) !important;
 }
 
+/* --- MODO OSCURO (CAMBIOS AQUÍ) --- */
 body.theme-neutral.dark-mode {
-    --bg-color: #121416;
-    --bg-card: #1E2022;
+    --bg-color: #000000;      /* NEGRO PURO (Erantzuna: lo del negro) */
+    --bg-card: #121212;       /* Gris muy oscuro para tarjetas */
     --text-main: #E4E6EB;
     --text-sec: #B0B3B8;
-    --accent-color: #2A79FF;
-    --border-color: #2E3033;
-    --nav-bg: rgba(30, 32, 34, 0.95);
-    --nav-border: #2E3033;
+
+    /* CAMBIO IMPORTANTE: DE AZUL A AMARILLO */
+    --accent-color: #FFD700;  /* AMARILLO DORADO */
+
+    --border-color: #333333;
+    --nav-bg: #000000;        /* Barra negra */
+    --nav-border: #333333;
 }
 
+/* Forzar barra negra en modo oscuro también */
 body.theme-neutral.dark-mode .custom-navbar {
-    background-color: var(--nav-bg) !important;
-    border-bottom: 3px solid var(--nav-border) !important;
+    background-color: #000000 !important;
+    border-bottom: 3px solid #333333 !important;
 }
 
+/* =========================================
+   3. OTRAS PALETAS (Azul, Calida, Sepia)
+   ========================================= */
 body.theme-blue {
     --bg-color: #0F172A;
     --bg-card: #1E293B;
@@ -139,7 +150,7 @@ body.theme-warm {
 }
 
 body.theme-warm.dark-mode {
-    --bg-color: #1A1B1D;
+    --bg-color: #121416;
     --bg-card: #252628;
     --text-main: #E8E6E3;
     --text-sec: #A3A1A0;
@@ -161,7 +172,7 @@ body.theme-sepia {
 }
 
 /* =========================================
-   3. NAVBAR
+   4. NAVBAR GENÉRICO
    ========================================= */
 .custom-navbar {
     background-color: var(--nav-bg);
@@ -172,9 +183,18 @@ body.theme-sepia {
 
 .custom-navbar .nav-link {
     color: var(--text-main) !important;
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 600;        /* Un poco más negrita (antes 500) */
+    font-size: 1.5rem;       /* MÁS GRANDE (antes 0.9rem) */
+    padding-left: 1rem;      /* Más separación lateral entre enlaces */
+    padding-right: 1rem;
+    padding-bottom: 1rem;
     transition: color 0.2s;
+}
+
+/* Opcional: Aumentar también el texto del desplegable */
+.dropdown-item {
+    font-size: 1.1rem;       /* Ajuste para que coincida mejor */
+    padding: 10px 20px;      /* Botones más "clicables" */
 }
 
 .custom-navbar .nav-link:hover {
@@ -187,7 +207,7 @@ body.theme-sepia {
 }
 
 /* =========================================
-   4. ARAUDIA ETA HOME TXARTELAK
+   5. ARAUDIA ETA HOME
    ========================================= */
 
 .araudia-container {
@@ -198,39 +218,31 @@ body.theme-sepia {
     padding-top: 20px;
 }
 
-/*
-   HEMEN DAGO KONPONKETA:
-   .card-img-top (Home) eta .card-img-wrapper (Araudia) bateratu ditut.
-   Biek 65%ko altuera izango dute beti, eta 'object-fit: cover' erabiliko dute.
-*/
 .card-img-top,
 .card-img-wrapper {
-    height: 75% !important; /* Espazio finkoa irudiarentzat */
+    height: 65% !important;
     width: 100%;
     pointer-events: none;
     background-color: var(--bg-color);
     overflow: hidden;
     border-bottom: 3px solid var(--border-color);
     opacity: 0.9;
-    object-fit: cover; /* Irudia deformatu gabe egokitu */
+    object-fit: cover;
 }
 
-/* Irudi barruko img etiketa */
 .card-img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* Hover efektua irudian */
 .card-img-top:hover,
 .card-img-wrapper:hover {
     transform: scale(1.05);
 }
 
-/* Testuaren gunea (Gainerako 35%) */
 .card-body {
-    height: 25% !important;
+    height: 35% !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -241,9 +253,8 @@ body.theme-sepia {
     font-weight: 500;
 }
 
-/* Txartel guztiak (Home eta Araudia) */
 .card {
-    height: 480px !important; /* Altuera finkoa denentzat */
+    height: 480px !important;
     width: 100%;
     flex-shrink: 0;
     cursor: pointer;
@@ -262,7 +273,6 @@ body.theme-sepia {
     transform: scale(0.98);
 }
 
-/* Link-a txartel barruan (Home) */
 a.card-link {
     text-decoration: none;
     color: inherit;
@@ -271,7 +281,7 @@ a.card-link {
 }
 
 /* =========================================
-   5. BOTOIAK (FLECHAS)
+   6. BOTOIAK
    ========================================= */
 .btn-circle {
     width: 50px;
@@ -280,7 +290,7 @@ a.card-link {
     font-size: 24px;
     line-height: 1;
     background-color: var(--accent-color) !important;
-    color: white !important;
+    color: white !important; /* Testua zuria beti, baita horia denean ere (ikusgarriagoa) */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -289,14 +299,24 @@ a.card-link {
     transition: transform 0.1s;
 }
 
+/* En modo oscuro, si el amarillo es muy claro, quizás quieras el texto negro */
+body.theme-neutral.dark-mode .btn-circle {
+    color: #000000 !important; /* Texto negro sobre botón amarillo */
+}
+
 .btn-circle:hover,
 .btn-circle:focus,
 .btn-circle:active {
     background-color: var(--accent-color) !important;
-    color: white !important;
     border-color: transparent !important;
     outline: none !important;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2) !important;
+}
+
+/* Mantener texto negro al pulsar en modo oscuro */
+body.theme-neutral.dark-mode .btn-circle:hover,
+body.theme-neutral.dark-mode .btn-circle:active {
+    color: #000000 !important;
 }
 
 .btn-circle:active {
@@ -304,7 +324,7 @@ a.card-link {
 }
 
 /* =========================================
-   6. RESPONSIVE (MÓVIL / PC)
+   7. RESPONSIVE
    ========================================= */
 
 @media (max-width: 767px) {
@@ -377,12 +397,26 @@ a.card-link {
     .card-details {
         display: none !important;
     }
+
+    .cards-container .card {
+        height: 480px !important;
+        max-height: 480px !important;
+        width: 100%;
+        flex-shrink: 0;
+        cursor: pointer;
+        background-color: var(--bg-card);
+        color: var(--text-main);
+        border: 3px solid var(--border-color);
+        padding-bottom: 0;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 #cards-container::-webkit-scrollbar { display: none; }
 
 /* =========================================
-   7. BESTE ELEMENTU BATZUK (Xehetasunak, Egutegia, etab)
+   8. ELEMENTOS EXTRA
    ========================================= */
 
 .card-details {
@@ -448,6 +482,11 @@ a.card-link {
     color: white;
 }
 
+/* Fix para modo oscuro en pills */
+body.theme-neutral.dark-mode .nav-pills .nav-link.active {
+    color: black !important; /* Texto negro en botón amarillo */
+}
+
 .tab-content {
     flex: 1;
     overflow-y: auto;
@@ -485,6 +524,10 @@ a.card-link {
     font-size: 0.85rem;
 }
 
+body.theme-neutral.dark-mode .task-number {
+    background-color: rgba(255, 215, 0, 0.2); /* Fondo amarillo suave en modo oscuro */
+}
+
 .date-row {
     display: flex;
     justify-content: space-between;
@@ -513,12 +556,15 @@ a.card-link {
 }
 
 .info-alert {
-    font-size: 0.85rem;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    background-color: #fff3cd !important;
+    color: #664d03 !important;
+    border: 3px solid #ffecb5 !important;
+    border-radius: 8px;
 }
 
-/* .card:not(...) ezabatu da, goiko .card orokorrarekin gatazkarik ez sortzeko */
+.info-alert svg {
+    fill: #664d03 !important;
+}
 
 .titulo-selekzioa {
     margin-bottom: 1.5rem;
@@ -557,18 +603,4 @@ a.card-link {
 .custom-alert a:hover {
     text-decoration: underline;
     filter: brightness(1.1);
-}
-/* --- INFO ALERT (Warning estiloa) --- */
-.info-alert {
-    background-color: #fff3cd !important; /* Hondo hori argia */
-    color: #664d03 !important;            /* Testu marroi iluna */
-
-    /* Borde lodia mantentzeko */
-    border: 3px solid #ffecb5 !important;
-    border-radius: 8px;
-}
-
-/* Ikonoa kolore berdinarekin jartzeko */
-.info-alert svg {
-    fill: #664d03 !important;
 }
