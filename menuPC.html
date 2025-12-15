@@ -21,14 +21,12 @@
 
             <!-- BOTÓN TEMAS -->
             <div class="dropdown ms-3">
-                <!-- AQUÍ ESTABA EL ERROR: He quitado el style="color:..." -->
                 <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center" type="button" id="themeDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none;">
                     <i class="bi bi-palette-fill me-2"></i>
                     <span>Itxura</span>
                 </button>
 
                 <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="themeDropdown" style="background-color: var(--bg-card); border-color: var(--border-color);">
-                    <!-- Las opciones del menú SÍ deben usar la variable de texto, no el blanco del header -->
                     <li>
                         <button class="dropdown-item d-flex align-items-center" onclick="setSpecificMode('iluna')" style="color: var(--text-main);">
                             <i class="bi bi-moon-stars-fill me-2"></i> Iluna

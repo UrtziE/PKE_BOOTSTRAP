@@ -25,14 +25,9 @@
 
 <body>
 
-<!-- =========================================
-     HEADER (PEGADO DIRECTAMENTE AQUÍ)
-     Para que funcione el cambio de tema
-     ========================================= -->
 
 <div id="menu-pc-container"></div>
 
-<!-- CONTENIDO PRINCIPAL -->
 <div class="main-container mt-5">
     <div class="row w-100">
         <div class="col-12 col-md-10 offset-md-1">
@@ -40,9 +35,8 @@
             <p class="text-center mb-4">Informatika fakultateko gradu amaierako lanaren araudiaren inguruko galdetegia.</p>
 
             <form id="galForm">
-                <!-- TUS PREGUNTAS (Sin cambios, funcionan bien) -->
 
-                <!-- Pregunta 1 -->
+                <!-- Galdera 1 -->
                 <div class="mb-3 question">
                     <label class="form-label">1️⃣ Zenbat deialdi ofizialetan matrikulatu daiteke ikasle bat ikasturte bakoitzean?</label>
                     <select class="form-select" required>
@@ -55,7 +49,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 2 -->
+                <!-- Galdera 2 -->
                 <div class="mb-3 question">
                     <label class="form-label">2️⃣ Ikasleak GAL-aren hizkuntza aukeratu dezake?</label>
                     <div class="form-check">
@@ -69,7 +63,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 3 -->
+                <!-- Galdera 3 -->
                 <div class="mb-3 question">
                     <label class="form-label">3️⃣ Zeintzuk dira epaimahaiaren osaera?</label>
                     <div class="form-check">
@@ -95,7 +89,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 4 -->
+                <!-- Galdera 4 -->
                 <div class="mb-3 question">
                     <label class="form-label">4️⃣ Posiblea da GALren araudia eguneratzea?</label>
                     <select class="form-select" required>
@@ -107,7 +101,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 5 -->
+                <!-- Galdera 5 -->
                 <div class="mb-3 question">
                     <label class="form-label">5️⃣ Zenbat kredituko lan-karga du GAL batek Informatika Ingeniaritzako Graduan?</label>
                     <select class="form-select" required>
@@ -119,7 +113,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 6 -->
+                <!-- Galdera 6 -->
                 <div class="mb-3 question">
                     <label class="form-label">6️⃣ Zenbat orrialde inguruko luzera izan behar du lanaren memoriak?</label>
                     <select class="form-select" required>
@@ -131,7 +125,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 7 -->
+                <!-- Galdera 7 -->
                 <div class="mb-3 question">
                     <label class="form-label">7️⃣ Denbora muga bat al dago lanaren aurkezpenean eta defentsan? Egiazkoa bada, zenbat?</label>
                     <select class="form-select" required>
@@ -143,7 +137,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 8 -->
+                <!-- Galdera 8 -->
                 <div class="mb-3 question">
                     <label class="form-label">8️⃣ Zer gertatzen da lana suspendituz gero?</label>
                     <select class="form-select" required>
@@ -154,7 +148,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 9 -->
+                <!-- Galdera 9 -->
                 <div class="mb-3 question">
                     <label class="form-label">9️⃣ GAL-a EHU organismotik kanpo garatu daiteke?</label>
                     <select class="form-select" required>
@@ -165,7 +159,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 10 -->
+                <!-- Galdera 10 -->
                 <div class="mb-3 question">
                     <label class="form-label">🔟 Lan mota adostutakoan, zein izango da lanaren zuzendaria? (Aukeratu zuzenak)</label>
                     <div class="form-check">
@@ -183,7 +177,7 @@
                     <div class="respuesta-correcta d-none"></div>
                 </div>
 
-                <!-- Pregunta 11 -->
+                <!-- Galdera 11 -->
                 <div class="mb-3 question">
                     <label class="form-label">11 Ze nota atera beharko duzu “Ohorezko Matrikularen” aipamena lortzeko?</label>
                     <select class="form-select" required>
@@ -205,10 +199,10 @@
     </div>
 </div>
 
-<!-- Menú móvil inferior -->
+<!-- Mobil menua -->
 <div id="menu-container" class="d-block d-md-none"></div>
 
-<!-- SCRIPTS NECESARIOS -->
+<!-- Beharrezko scriptak -->
 <script src="theme.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -217,7 +211,6 @@
         const form = document.getElementById("galForm");
         const emaitza = document.getElementById("emaitza");
 
-        // Respuestas correctas
         const correctAnswers = [
             "2 deialdi",
             "Bai",
