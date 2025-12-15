@@ -9,9 +9,176 @@
     <link rel="stylesheet" href="css/navig.css">
     <link rel="stylesheet" href="css/style.css">
 
-
     <style>
+        :root {
+            --bg-color: #F8F9FA;
+            --bg-card: #FFFFFF;
+            --text-main: #212529;
+            --text-sec: #495057;
+            --accent-color: #0A66C2;
+            --border-color: #CED4DA;
+        }
 
+        body {
+            padding-top: 80px;
+            padding-bottom: 60px;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.3s ease;
+        }
+
+        a { color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
+
+        .card, .alert, .border, .btn-circle, .portatil-details-panel {
+            border-width: 3px !important;
+            border-style: solid !important;
+            border-color: var(--border-color) !important;
+        }
+
+        .btn-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            line-height: 1;
+            background-color: var(--accent-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: transform 0.1s;
+        }
+
+        .btn-circle:hover,
+        .btn-circle:focus,
+        .btn-circle:active {
+            background-color: var(--accent-color) !important;
+            color: white !important;
+            border-color: transparent !important;
+            outline: none !important;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2) !important;
+        }
+
+        .btn-circle:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 767px) {
+            .carousel-wrapper {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: flex-start;
+                margin-top: 20px;
+                position: relative;
+            }
+
+            .btn-wrapper {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px;
+                margin-right: 15px;
+                position: -webkit-sticky;
+                position: sticky;
+                top: 120px;
+                align-self: flex-start;
+                z-index: 1000;
+            }
+
+            #cards-container {
+                flex: 1;
+                height: auto !important;
+                overflow: visible !important;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .btn-circle { margin: 0 !important; }
+        }
+
+        #cards-container::-webkit-scrollbar { display: none; }
+
+        @media (min-width: 768px) {
+            #cards-container {
+                height: auto !important;
+                overflow-y: visible !important;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+            }
+
+            .btn-wrapper { display: none !important; }
+
+            .portatil-details-panel {
+                width: 100%;
+                max-width: 900px;
+                margin: 40px auto;
+                padding: 40px;
+                background-color: var(--bg-card);
+                color: var(--text-main);
+                border-radius: 16px;
+                min-height: 200px;
+            }
+
+            .portatil-details-panel h4 { color: var(--accent-color); margin-bottom: 20px; font-weight: bold; }
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .card:active { transform: scale(0.98); }
+
+        .card-img-wrapper {
+            height: 65%;
+            width: 100%;
+            background-color: #eee;
+            border-bottom: 3px solid var(--border-color);
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            height: 35%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .card-details {
+            display: none;
+            background-color: var(--bg-card);
+            padding: 15px;
+            margin-top: -5px;
+            border-radius: 0 0 12px 12px;
+            border: 3px solid var(--border-color);
+            border-top: none;
+            white-space: pre-line;
+        }
+
+        .custom-alert {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+        }
     </style>
 </head>
 
@@ -19,66 +186,76 @@
 
 <div id="menu-pc-container"></div>
 
+<div class="main-container container mt-4">
 
-<div class="main-container">
     <div class="text-center mb-4">
-        <h1 class="display-5">Araudia</h1>
-    </div>
-    <div class="alert custom-alert border d-inline-block mt-2">
-        <p class="mb-0">
-            Hau laburpen bat da, informazio gehiago nahi baldin baduzu zoaz hurrengo esteketara:
-            <br class="d-block d-md-none"> 
-
-            <a href="https://www.ehu.eus/documents/d/informatika-fakultatea/normativa_iig_eu" class="fw-bold ">Informatika</a> |
-            <a href="https://www.ehu.eus/documents/340468/2334257/Normativa_UPVEHU_eus" class="fw-bold ">Beste graduak</a>
-        </p>
+        <h1 class="display-5 fw-bold">Araudia</h1>
     </div>
 
-    <div class="carousel-wrapper d-flex justify-content-center">
-
-        <div class="btn-wrapper d-block d-lg-none">
-            <button class="btn btn-primary btn-circle" onclick="scrollCards(-1)">&#8593;</button>
-            <button class="btn btn-primary btn-circle" onclick="scrollCards(1)">&#8595;</button>
+    <div class="text-center">
+        <div class="alert custom-alert d-inline-block text-start text-md-center">
+            <p class="mb-0">
+                Hau laburpen bat da, informazio gehiago nahi baldin baduzu zoaz hurrengo esteketara:
+                <br class="d-block d-md-none">
+                <a href="https://www.ehu.eus/documents/d/informatika-fakultatea/normativa_iig_eu">Informatika</a> |
+                <a href="https://www.ehu.eus/documents/340468/2334257/Normativa_UPVEHU_eus">Beste graduak</a>
+            </p>
         </div>
-        <div class="cards-container" id="cards-container"></div>
+    </div>
 
+    <div class="carousel-wrapper position-relative">
+
+        <div class="btn-wrapper d-md-none">
+            <button class="btn btn-circle" onclick="scrollCards(-1)">&#8593;</button>
+            <button class="btn btn-circle" onclick="scrollCards(1)">&#8595;</button>
+        </div>
+
+        <div class="row g-4 justify-content-center" id="cards-container"></div>
+
+    </div>
+
+    <div id="portatil-details-panel" class="portatil-details-panel d-none d-md-block">
+        <h4 id="portatil-details-title">Hautatu txartel bat...</h4>
+        <p id="portatil-details-text">Egin klik goiko txarteletan informazio zehatza hemen ikusteko.</p>
     </div>
 
 </div>
+<div id="menu-container" class="d-block d-md-none"></div>
 
 <script>
     const titulos = [
-      "1. DESKRIBAPEN OROKORRA ETA BETE BEHARRAK",
-      "2. ZEINTZUK DIRA HELBURUAK ETA ZER LANTZEN DA",
-      "3. IZEN-EMATEA ETA DEIALDIAK",
-      "4. LANEN ZUZENDARITZA",
-      "5. GAIAK ETA ESPEZIALITATEA",
-      "6. LANA ESLEITZEA ETA GAIA AUKERATZEA",
-      "7. EBALUAZIO-EPAIMAHAIA",
-      "8. LANAREN AURKEZPENA ETA DEFENTSA",
-      "9. EBALUAZIOA ETA KALIFIKAZIOA",
-      "10. GRADU AMAIERAKO LAN BATZORDEA",
-      "11. ARAUDI HAU EGUNERATZEA"
+        "1. DESKRIBAPEN OROKORRA ETA BETE BEHARRAK",
+        "2. ZEINTZUK DIRA HELBURUAK ETA ZER LANTZEN DA",
+        "3. IZEN-EMATEA ETA DEIALDIAK",
+        "4. LANEN ZUZENDARITZA",
+        "5. GAIAK ETA ESPEZIALITATEA",
+        "6. LANA ESLEITZEA ETA GAIA AUKERATZEA",
+        "7. EBALUAZIO-EPAIMAHAIA",
+        "8. LANAREN AURKEZPENA ETA DEFENTSA",
+        "9. EBALUAZIOA ETA KALIFIKAZIOA",
+        "10. GRADU AMAIERAKO LAN BATZORDEA",
+        "11. ARAUDI HAU EGUNERATZEA"
     ];
 
     const descripciones = {
-            1: "-Ikasle bakoitzak banaka lan bat egin behar du, zuzendariek gainbegiratuta. \n\n-Gradu amaierako lan bat defendatu eta ebaluatu ahalko da gehienez 3 hautazko irakasgai gainditzea falta direnean, hau da, 3 eta 4 maila artean 18 hautazko kreditu falta zaionean. \n\n-Informatika Ingeniaritzako Graduan, lan hau Gradu Amaierako Lana izena duen derrigorrezko irakasgaiari dagokio eta 12 kredituko lan-karga du",
-            2: "Helburu nagusia graduan lortutako gaitasunak sendotzea eta gaitasun horiek praktikan aplikatzeko trebetasunak garatzea da. Horretarako, ikasketetan eta espezialitatean prestakuntza akademikoarekin lotutako arazo bat aztertu, irtenbide egokia diseinatu eta ezarriko da. \n \n Lana egin bitartean, trebetasun hauek garatu eta egiaztatuko dira: \n\n -Lanean proposatutako helburuak lortzea\n\n-Egin beharreko lana planifikatzea eta kudeatzea\n\n-Egindako lanaren memoria idaztea\n\n-Egindako lana jendaurrean aurkeztea",
-            3: "-Lanaren matrikula beste irakasgai baten modu berdinean matrikula orokorrean aukeratzen da\n\n-Matrikulak ikasturte bakoitzean bi deialdi ofizial egiteko eskubidea emango du. Ebaluatuak izan ez diren edo ikasturterako ezarritako deialdietan beren lana defendatu ez duten ikasleak berriro matrikulatu beharko dira\n\n-Ikasleek GAL-aren hizkuntza aukeratuko dute matrikula egiterakoan",
-            4: "Ikasle bakoitzak irakasle bat edukiko du zuzendari gisa. Ikasleak GAL-a enpresan eginez gero, enpresako langile bat ere izango du zuzendari gisa",
-            5: "-Ikasleak GAL-a bere espezialitatearen barruan egin beharko du\n\n-Ikasleak buruan gai bat badu GAL-a gai horri buruz egin dezake, bestela, fakultateak proposatutako gaien artean bat aukeratu beharko du",
-            6: "Lan motak: \n\n-Adostutakoak: Ikasle eta irakasle baten artean erabakitzen da lanaren gaia. Lanaren zuzendaria irakaslea izango da\n\n-Eskainitakoak: Ikasle, irakasle eta kanpoko enpresa bateko tutore baten artean erabakitzen da lanaren gaia. Irakasleaz ez ezik, enpresako langileak ere lanaren zuzendariak izan daitezke\n\n-Kanpo erakundeetakoak: Ikasleak bere espezialitatearen sailak eskaintzen dituen lanen artean bat aukeratu beharko du. Lanaren zuzendaria irakasle bat izango da \n\n\n Lan bat onartzeko informazio hau jakin behar da aurrez aurre: Espezialitatea, mota, zuzendaritza,  izenburua, deskribapena, hizkuntza(eus/gaz/ing), beharrezko baliabideak, gomendioak eta jabetza intelektuala eta argitaratzeko eskubideak \n\nGAL-a gainditzen ez duen ikasleak lanaren luzapena eska dezake",
-            7: "Epaimahaiaren osaera:\n\n -Lehendakaria: Fakultateko Batzarrak izendatutako pertsona\n\n-Idazkaria: Lanaren zuzendaria\n\nKidea: Gaiaren inguruan ezagutzak dituen irakaslea",
-            8: "-Memoria formatua librea da eta 60 orrialde inguruko luzera izatea gomendatzen da\n\n-Lanaren poster bertikal bisual bat egitea gomendatzen da defentsaren datarekin\n\n-Defentsaren data gutxienez hiru egun lehenago argitaratuko da\n\n-Defentsa memoria idatzi den hizkuntzan egin beharko da eta gomendatzen da 20 minututan egitea,  gehieneko denbora 30 minutu izanik",
-            9: "Kalifikazioa 0-10 bitartean izango da. “Ohorezko Matrikularen” aipamena epaimahaiak proposatutako lanei eman ahal izango zaie, baldin eta 9ko kalifikazioa edo handiagoa badute\n\nSuspendituz gero, epaimahaiak txosten bat osatuko du lana hobetzeko gomendioekin aurrerago berriz kalifikatua izateko",
-            10: "Fakultatean GAL-en Batzorde bat egongo da, GAL-ari buruzko hainbat irizpide eta dokumentu zehazteko.",
-            11: "GAL-aren Lan batzordeak araudi honetan aldaketak proposa ditzake eta Zentroko Batzordeak onar ditzan. Aldaketa hauek onartuz gero, hurrengo ikasturtean aplikatuko lirateke."
-        };
+        1: "-Ikasle bakoitzak banaka lan bat egin behar du, zuzendariek gainbegiratuta. \n\n-Gradu amaierako lan bat defendatu eta ebaluatu ahalko da gehienez 3 hautazko irakasgai gainditzea falta direnean, hau da, 3 eta 4 maila artean 18 hautazko kreditu falta zaionean. \n\n-Informatika Ingeniaritzako Graduan, lan hau Gradu Amaierako Lana izena duen derrigorrezko irakasgaiari dagokio eta 12 kredituko lan-karga du",
+        2: "Helburu nagusia graduan lortutako gaitasunak sendotzea eta gaitasun horiek praktikan aplikatzeko trebetasunak garatzea da. Horretarako, ikasketetan eta espezialitatean prestakuntza akademikoarekin lotutako arazo bat aztertu, irtenbide egokia diseinatu eta ezarriko da. \n \n Lana egin bitartean, trebetasun hauek garatu eta egiaztatuko dira: \n\n -Lanean proposatutako helburuak lortzea\n\n-Egin beharreko lana planifikatzea eta kudeatzea\n\n-Egindako lanaren memoria idaztea\n\n-Egindako lana jendaurrean aurkeztea",
+        3: "-Lanaren matrikula beste irakasgai baten modu berdinean matrikula orokorrean aukeratzen da\n\n-Matrikulak ikasturte bakoitzean bi deialdi ofizial egiteko eskubidea emango du. Ebaluatuak izan ez diren edo ikasturterako ezarritako deialdietan beren lana defendatu ez duten ikasleak berriro matrikulatu beharko dira\n\n-Ikasleek GAL-aren hizkuntza aukeratuko dute matrikula egiterakoan",
+        5: "-Ikasleak GAL-a bere espezialitatearen barruan egin beharko du\n\n-Ikasleak buruan gai bat badu GAL-a gai horri buruz egin dezake, bestela, fakultateak proposatutako gaien artean bat aukeratu beharko du",
+        6: "Lan motak: \n\n-Adostutakoak: Ikasle eta irakasle baten artean erabakitzen da lanaren gaia. Lanaren zuzendaria irakaslea izango da\n\n-Eskainitakoak: Ikasle, irakasle eta kanpoko enpresa bateko tutore baten artean erabakitzen da lanaren gaia. Irakasleaz ez ezik, enpresako langileak ere lanaren zuzendariak izan daitezke\n\n-Kanpo erakundeetakoak: Ikasleak bere espezialitatearen sailak eskaintzen dituen lanen artean bat aukeratu beharko du. Lanaren zuzendaria irakasle bat izango da \n\n\n Lan bat onartzeko informazio hau jakin behar da aurrez aurre: Espezialitatea, mota, zuzendaritza,  izenburua, deskribapena, hizkuntza(eus/gaz/ing), beharrezko baliabideak, gomendioak eta jabetza intelektuala eta argitaratzeko eskubideak \n\nGAL-a gainditzen ez duen ikasleak lanaren luzapena eska dezake",
+        7: "Epaimahaiaren osaera:\n\n -Lehendakaria: Fakultateko Batzarrak izendatutako pertsona\n\n-Idazkaria: Lanaren zuzendaria\n\nKidea: Gaiaren inguruan ezagutzak dituen irakaslea",
+        8: "-Memoria formatua librea da eta 60 orrialde inguruko luzera izatea gomendatzen da\n\n-Lanaren poster bertikal bisual bat egitea gomendatzen da defentsaren datarekin\n\n-Defentsaren data gutxienez hiru egun lehenago argitaratuko da\n\n-Defentsa memoria idatzi den hizkuntzan egin beharko da eta gomendatzen da 20 minututan egitea,  gehieneko denbora 30 minutu izanik",
+        9: "Kalifikazioa 0-10 bitartean izango da. “Ohorezko Matrikularen” aipamena epaimahaiak proposatutako lanei eman ahal izango zaie, baldin eta 9ko kalifikazioa edo handiagoa badute\n\nSuspendituz gero, epaimahaiak txosten bat osatuko du lana hobetzeko gomendioekin aurrerago berriz kalifikatua izateko",
+        10: "Fakultatean GAL-en Batzorde bat egongo da, GAL-ari buruzko hainbat irizpide eta dokumentu zehazteko.",
+        11: "GAL-aren Lan batzordeak araudi honetan aldaketak proposa ditzake eta Zentroko Batzordeak onar ditzan. Aldaketa hauek onartuz gero, hurrengo ikasturtean aplikatuko lirateke."
+    };
 
     const cardsContainer = document.getElementById('cards-container');
 
     titulos.forEach((t, i) => {
         const id = i + 1;
+        const col = document.createElement("div");
+        col.className = "col-12 col-md-6 col-lg-3 mobile-card-wrapper";
 
         const card = document.createElement("div");
         card.className = "card";
@@ -86,10 +263,10 @@
 
         card.innerHTML = `
             <div class="card-img-wrapper">
-                <img src="img/artikulu${id}.png">
+                <img src="img/artikulu${id}.png" onerror="this.src='https://via.placeholder.com/400x300?text=Artikulu+${id}'">
             </div>
             <div class="card-body">
-                <p class="card-title">${t}</p>
+                <p class="mb-0">${t}</p>
             </div>
         `;
 
@@ -98,14 +275,15 @@
         details.id = `details-${id}`;
         details.innerHTML = descripciones[id] || "Ez dago informaziorik.";
 
-        cardsContainer.appendChild(card);
-        cardsContainer.appendChild(details);
+        col.appendChild(card);
+        col.appendChild(details);
+        cardsContainer.appendChild(col);
     });
-    function scrollCards(direction) {
-        const container = document.getElementById('cards-container');
-        const scrollAmount = 315;
 
-        container.scrollBy({
+    function scrollCards(direction) {
+        const scrollAmount = 400;
+
+        window.scrollBy({
             top: direction * scrollAmount,
             behavior: 'smooth'
         });
@@ -113,15 +291,17 @@
 
     function toggleDescription(id) {
         const isPortatil = window.innerWidth >= 768;
-
         const title = titulos[id - 1];
         const text = descripciones[id] || "Ez dago informaziorik.";
 
         if (isPortatil) {
-            document.getElementById("portatil-details-title").innerText = title;
-            document.getElementById("portatil-details-text").innerText = text;
-
+            const portatilTitle = document.getElementById("portatil-details-title");
+            const portatilText = document.getElementById("portatil-details-text");
+            portatilTitle.innerText = title;
+            portatilText.innerText = text;
             const portatilPanel = document.getElementById("portatil-details-panel");
+            portatilPanel.style.opacity = '0.5';
+            setTimeout(() => portatilPanel.style.opacity = '1', 200);
             portatilPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             return;
         }
@@ -129,25 +309,20 @@
         const targetDetails = document.getElementById(`details-${id}`);
         const wasVisible = targetDetails.style.display === "block";
 
-        const allDetails = document.querySelectorAll('.card-details');
-        allDetails.forEach(detail => {
+        document.querySelectorAll('.card-details').forEach(detail => {
             detail.style.display = 'none';
         });
 
         if (!wasVisible) {
             targetDetails.style.display = 'block';
-            targetDetails.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            setTimeout(() => {
+                targetDetails.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
         }
     }
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<div id="portatil-details-panel" class="portatil-details-panel d-none d-md-block">
-    <h4 id="portatil-details-title"></h4>
-    <p id="portatil-details-text"></p>
-</div>
-<div id="menu-container" class="d-block d-md-none"></div>
 <script src="loader-menu.js"></script>
 <script src="theme.js"></script>
 

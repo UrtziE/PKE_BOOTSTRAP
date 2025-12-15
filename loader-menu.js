@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
-    // Usamos Promise.all para cargar ambos menús en paralelo
+
     Promise.all([
         loadMenu('menuPC.html', 'menu-pc-container'),
         loadMenu('menu.html', 'menu-container')
@@ -27,18 +27,17 @@ function highlightActiveLink() {
     let page = path.split("/").pop();
     if (page === "") page = "index.html";
 
-    // ¡CORRECCIÓN! El selector ahora busca en AMBOS menús.
-    // Selecciona todos los .nav-link dentro de los contenedores de menú.
+
     const links = document.querySelectorAll('#menu-pc-container .nav-link, #menu-container .nav-link');
 
     links.forEach(link => {
         const href = link.getAttribute('href');
 
-        // Limpiamos la clase 'active' de todos los enlaces primero
+
         link.classList.remove('active');
         link.removeAttribute('aria-current');
 
-        // Si el href coincide, añadimos la clase 'active'
+
         if (href === page) {
             link.classList.add('active');
             link.setAttribute('aria-current', 'page');
