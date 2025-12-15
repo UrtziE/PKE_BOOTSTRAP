@@ -558,3 +558,17 @@ a.card-link {
     text-decoration: underline;
     filter: brightness(1.1);
 }
+/* --- INFO ALERT (Warning estiloa) --- */
+.info-alert {
+    background-color: #fff3cd !important; /* Hondo hori argia */
+    color: #664d03 !important;            /* Testu marroi iluna */
+
+    /* Borde lodia mantentzeko */
+    border: 3px solid #ffecb5 !important;
+    border-radius: 8px;
+}
+
+/* Ikonoa kolore berdinarekin jartzeko */
+.info-alert svg {
+    fill: #664d03 !important;
+}
