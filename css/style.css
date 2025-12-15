@@ -184,7 +184,7 @@ body.theme-sepia {
 .custom-navbar .nav-link {
     color: var(--text-main) !important;
     font-weight: 600;        /* Un poco más negrita (antes 500) */
-    font-size: 1.5rem;       /* MÁS GRANDE (antes 0.9rem) */
+    font-size: 1.2rem;       /* MÁS GRANDE (antes 0.9rem) */
     padding-left: 1rem;      /* Más separación lateral entre enlaces */
     padding-right: 1rem;
     padding-bottom: 1rem;
