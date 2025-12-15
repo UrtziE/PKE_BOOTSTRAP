@@ -44,8 +44,8 @@
 
 /* Ikonoak */
 .menu-icon {
-    height: 32px;
-    width: auto;
+    height: 50px;
+    width: 50px;
     object-fit: contain;
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -60,4 +60,9 @@
 
 .bottom-nav-blue .nav-link.active .menu-icon {
     transform: translateY(-4px) scale(1.1);
+}
+.menu-text {
+    font-size: 0.6rem; /* Letra-tamaina txikia, menurako egokia */
+    line-height: 1;      /* Lerro-arteko tartea murrizten du */
+    font-weight: 500;    /* Letra-pisu ertaina */
 }

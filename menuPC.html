@@ -2,16 +2,14 @@
     <nav class="navbar fixed-top custom-navbar">
         <div class="container d-flex align-items-center">
 
-            <!-- 1. LOGO (BETI IKUSGAI: EZKERREAN) -->
+            <!-- LOGO -->
             <a class="navbar-brand me-auto" href="index.html">
                 <img class="logo" src="https://www.ehu.eus/o/ehu-theme/images/custom/EHU_logotipo_negativo_EUES_horizontal_sinfondo.svg" alt="UPV/EHU" height="40">
             </a>
 
-            <!-- 2. MENUKO ESTEKAK (SOILIK PC-AN IKUSGAI) -->
-            <!-- 'd-none': Ezkutatu beti -->
-            <!-- 'd-lg-block': Baina pantaila handietan erakutsi bloke bezala -->
+            <!-- ENLACES PC -->
             <div class="d-none d-md-block">
-                <ul class="navbar-nav d-flex flex-row gap-3"> <!-- flex-row: horizontalki jartzeko -->
+                <ul class="navbar-nav d-flex flex-row gap-3">
                     <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
                     <li class="nav-item"><a class="nav-link" href="araudia.html">ARAUDIA</a></li>
                     <li class="nav-item"><a class="nav-link" href="egutegia.html">EGUTEGIA</a></li>
@@ -21,30 +19,29 @@
                 </ul>
             </div>
 
-            <!-- 3. GAIEN MENUA (BETI IKUSGAI: ESKUINEAN) -->
+            <!-- BOTÓN TEMAS -->
             <div class="dropdown ms-3">
-                <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center" type="button" id="themeDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--text-main); text-decoration: none;">
+                <!-- AQUÍ ESTABA EL ERROR: He quitado el style="color:..." -->
+                <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center" type="button" id="themeDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none;">
                     <i class="bi bi-palette-fill me-2"></i>
                     <span class="d-none d-sm-inline">Itxura</span>
                 </button>
 
                 <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="themeDropdown" style="background-color: var(--bg-card); border-color: var(--border-color);">
-                    <!-- 1. AUKERA: ILUNA -->
+                    <!-- Las opciones del menú SÍ deben usar la variable de texto, no el blanco del header -->
                     <li>
                         <button class="dropdown-item d-flex align-items-center" onclick="setSpecificMode('iluna')" style="color: var(--text-main);">
-                            Iluna
+                            <i class="bi bi-moon-stars-fill me-2"></i> Iluna
                         </button>
                     </li>
-                    <!-- 2. AUKERA: ARGIA -->
                     <li>
                         <button class="dropdown-item d-flex align-items-center" onclick="setSpecificMode('argia')" style="color: var(--text-main);">
-                             Argia
+                            <i class="bi bi-sun-fill me-2"></i> Argia
                         </button>
                     </li>
-                    <!-- 3. AUKERA: URDINA -->
                     <li>
                         <button class="dropdown-item d-flex align-items-center" onclick="setSpecificMode('urdina')" style="color: var(--text-main);">
-                             Urdina
+                            <i class="bi bi-circle-fill text-primary me-2"></i> Urdina
                         </button>
                     </li>
                 </ul>

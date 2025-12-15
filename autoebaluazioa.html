@@ -1,199 +1,216 @@
 <!doctype html>
 <html lang="eu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gradu Amaierako Lanaren Autoebaluazioa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gradu Amaierako Lanaren Autoebaluazioa</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- TUS ESTILOS -->
+    <!-- Asegúrate de que navbar.css tenga los colores del tema -->
     <link rel="stylesheet" href="css/navig.css">
     <link rel="stylesheet" href="css/style.css">
 
-  <style>
-    .correct { border: 2px solid green; }
-    .incorrect { border: 2px solid red; }
-    .respuesta-correcta { font-size: 0.9rem; color: green; margin-top: 0.3rem; }
-  </style>
+    <style>
+        .correct { border: 2px solid green !important; }
+        .incorrect { border: 2px solid red !important; }
+        .respuesta-correcta { font-size: 0.9rem; font-weight: bold; margin-top: 0.5rem; }
+        .text-success-custom { color: #198754; } /* Verde para modo oscuro/claro */
+        .text-danger-custom { color: #dc3545; }  /* Rojo para modo oscuro/claro */
+    </style>
 </head>
 
-<body >
+<body>
+
+<!-- =========================================
+     HEADER (PEGADO DIRECTAMENTE AQUÍ)
+     Para que funcione el cambio de tema
+     ========================================= -->
 
 <div id="menu-pc-container"></div>
 
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main-container mt-5">
+    <div class="row w-100">
+        <div class="col-12 col-md-10 offset-md-1">
+            <h1 class="text-center mb-4">🎓 Gradu Amaierako Lanari buruzko galdetegia</h1>
+            <p class="text-center mb-4">Informatika fakultateko gradu amaierako lanaren araudiaren inguruko galdetegia.</p>
 
-  <div class="main-container mt-5">
-    <div class="row">
-      <div class="col-12 col-md-10 offset-md-1">
-        <h1 class="text-center mb-4">🎓 Gradu Amaierako Lanari buruzko galdetegia</h1>
-        <p class="text-center text-muted mb-4">Informatika fakultateko gradu amaierako lanaren araudiaren inguruko galdetegia.</p>
+            <form id="galForm">
+                <!-- TUS PREGUNTAS (Sin cambios, funcionan bien) -->
 
-        <form id="galForm">
-
-          <!-- Pregunta 1 -->
-          <div class="mb-3 question">
-            <label class="form-label">1️⃣ Zenbat deialdi ofizialetan matrikulatu daiteke ikasle bat ikasturte bakoitzean?</label>
-            <select class="form-select" required>
-              <option value="">Aukeratu bat</option>
-              <option>1 deialdi</option>
-              <option>2 deialdi</option>
-              <option>3 deialdi</option>
-              <option>4 deialdi</option>
-            </select>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
-
-          <!-- Pregunta 2 -->
-          <div class="mb-3 question">
-            <label class="form-label">2️⃣ Ikasleak GAL-aren hizkuntza aukeratu dezake?</label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="q2" value="Bai">
-              <label class="form-check-label">Bai</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="q2" value="Ez">
-              <label class="form-check-label">Ez</label>
-            </div>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
-
-          <!-- Pregunta 3 -->
-          <div class="mb-3 question">
-            <label class="form-label">3️⃣ Zeintzuk dira epaimahaiaren osaera?</label>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="q3" value="Lehendakaria">
-              <label class="form-check-label">Lehendakaria</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="q3" value="Edozein irakasle">
-              <label class="form-check-label">Edozein irakasle</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="q3" value="Lanaren zuzendaria">
-              <label class="form-check-label">Lanaren zuzendaria</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="q3" value="Gaiaren inguruan ezagutzak dituen irakaslea edo kidea">
-              <label class="form-check-label">Gaiaren inguruan ezagutzak dituen irakaslea edo kidea</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="q3" value="Orientatzailea">
-              <label class="form-check-label">Orientatzailea</label>
-            </div>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
-
-          <!-- Pregunta 4 -->
-          <div class="mb-3 question">
-            <label class="form-label">4️⃣ Posiblea da GALren araudia eguneratzea?</label>
-            <select class="form-select" required>
-              <option value="">Aukeratu bat</option>
-              <option>Bai, inolako arazorik gabe.</option>
-              <option>Ez, ez da posible.</option>
-              <option>Bai, baina baldintza batzuk bete behar dira.</option>
-            </select>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
-
-          <!-- Pregunta 5 -->
-          <div class="mb-3 question">
-            <label class="form-label">5️⃣ Zenbat kredituko lan-karga du GAL batek Informatika Ingeniaritzako Graduan?</label>
-            <select class="form-select" required>
-              <option value="">Aukeratu bat</option>
-              <option>12</option>
-              <option>18</option>
-              <option>10</option>
-            </select>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
-
-          <!-- Pregunta 6 -->
-          <div class="mb-3 question">
-            <label class="form-label">6️⃣ Zenbat orrialde inguruko luzera izan behar du lanaren memoriak?</label>
-            <select class="form-select" required>
-              <option value="">Aukeratu bat</option>
-              <option>30</option>
-              <option>60</option>
-              <option>100</option>
-            </select>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
-
-          <!-- Pregunta 7 -->
-          <div class="mb-3 question">
-            <label class="form-label">7️⃣ Denbora muga bat al dago lanaren aurkezpenean eta defentsan? Egiazkoa bada, zenbat?</label>
-            <select class="form-select" required>
-              <option value="">Aukeratu bat</option>
-              <option>Ez</option>
-              <option>Bai, 40 minutu</option>
-              <option>Bai, 30m</option>
-            </select>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
-
-          <!-- Pregunta 8 -->
-          <div class="mb-3 question">
-            <label class="form-label">8️⃣ Zer gertatzen da lana suspendituz gero?</label>
-            <select class="form-select" required>
-              <option value="">Aukeratu bat</option>
-              <option>Epaimahiak txosten bat osatuko du lana hobetzeko gomendioekin</option>
-              <option>Lanaren gaia aldatu egin beharko dezu</option>
-            </select>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
-
-          <!-- Pregunta 9 -->
-          <div class="mb-3 question">
-            <label class="form-label">9️⃣ GAL-a EHU organismotik kanpo garatu daiteke?</label>
-            <select class="form-select" required>
-              <option value="">Aukeratu bat</option>
-              <option>Bai</option>
-              <option>Ez</option>
-            </select>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
-
-          <!-- Pregunta 10 -->
-            <!-- Pregunta 10 - CORREGIDA -->
-            <div class="mb-3 question">
-                <label class="form-label">🔟 Lan mota adostutakoan, zein izango da lanaren zuzendaria? (Aukeratu zuzenak)</label>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="q10" value="Ausazko irakasle bat">
-                    <label class="form-check-label">Ausazko irakasle bat</label>
+                <!-- Pregunta 1 -->
+                <div class="mb-3 question">
+                    <label class="form-label">1️⃣ Zenbat deialdi ofizialetan matrikulatu daiteke ikasle bat ikasturte bakoitzean?</label>
+                    <select class="form-select" required>
+                        <option value="">Aukeratu bat</option>
+                        <option>1 deialdi</option>
+                        <option>2 deialdi</option>
+                        <option>3 deialdi</option>
+                        <option>4 deialdi</option>
+                    </select>
+                    <div class="respuesta-correcta d-none"></div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="q10" value="Enpresako langileak">
-                    <label class="form-check-label">Enpresako langileak</label>
+
+                <!-- Pregunta 2 -->
+                <div class="mb-3 question">
+                    <label class="form-label">2️⃣ Ikasleak GAL-aren hizkuntza aukeratu dezake?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" value="Bai">
+                        <label class="form-check-label">Bai</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" value="Ez">
+                        <label class="form-check-label">Ez</label>
+                    </div>
+                    <div class="respuesta-correcta d-none"></div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="q10" value="Adostatuko irakaslea">
-                    <label class="form-check-label">Adostatuko irakaslea</label>
+
+                <!-- Pregunta 3 -->
+                <div class="mb-3 question">
+                    <label class="form-label">3️⃣ Zeintzuk dira epaimahaiaren osaera?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="q3" value="Lehendakaria">
+                        <label class="form-check-label">Lehendakaria</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="q3" value="Edozein irakasle">
+                        <label class="form-check-label">Edozein irakasle</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="q3" value="Lanaren zuzendaria">
+                        <label class="form-check-label">Lanaren zuzendaria</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="q3" value="Gaiaren inguruan ezagutzak dituen irakaslea edo kidea">
+                        <label class="form-check-label">Gaiaren inguruan ezagutzak dituen irakaslea edo kidea</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="q3" value="Orientatzailea">
+                        <label class="form-check-label">Orientatzailea</label>
+                    </div>
+                    <div class="respuesta-correcta d-none"></div>
                 </div>
-                <div class="respuesta-correcta d-none"></div>
-            </div>
 
-          <!-- Pregunta 11 -->
-          <div class="mb-3 question">
-            <label class="form-label">11 Ze nota atera beharko duzu “Ohorezko Matrikularen” aipamena lortzeko?</label>
-            <select class="form-select" required>
-              <option value="">Aukeratu bat</option>
-              <option>10 baino gehiago</option>
-              <option>10</option>
-              <option>9 edo gehiago</option>
-            </select>
-            <div class="respuesta-correcta d-none"></div>
-          </div>
+                <!-- Pregunta 4 -->
+                <div class="mb-3 question">
+                    <label class="form-label">4️⃣ Posiblea da GALren araudia eguneratzea?</label>
+                    <select class="form-select" required>
+                        <option value="">Aukeratu bat</option>
+                        <option>Bai, inolako arazorik gabe.</option>
+                        <option>Ez, ez da posible.</option>
+                        <option>Bai, baina baldintza batzuk bete behar dira.</option>
+                    </select>
+                    <div class="respuesta-correcta d-none"></div>
+                </div>
 
-          <div class="text-center mt-4">
-            <button type="submit" class="btn btn-success px-4">Bidali erantzunak</button>
-          </div>
-        </form>
+                <!-- Pregunta 5 -->
+                <div class="mb-3 question">
+                    <label class="form-label">5️⃣ Zenbat kredituko lan-karga du GAL batek Informatika Ingeniaritzako Graduan?</label>
+                    <select class="form-select" required>
+                        <option value="">Aukeratu bat</option>
+                        <option>12</option>
+                        <option>18</option>
+                        <option>10</option>
+                    </select>
+                    <div class="respuesta-correcta d-none"></div>
+                </div>
 
-        <div id="emaitza" class="alert alert-info mt-4 d-none"></div>
-      </div>
+                <!-- Pregunta 6 -->
+                <div class="mb-3 question">
+                    <label class="form-label">6️⃣ Zenbat orrialde inguruko luzera izan behar du lanaren memoriak?</label>
+                    <select class="form-select" required>
+                        <option value="">Aukeratu bat</option>
+                        <option>30</option>
+                        <option>60</option>
+                        <option>100</option>
+                    </select>
+                    <div class="respuesta-correcta d-none"></div>
+                </div>
+
+                <!-- Pregunta 7 -->
+                <div class="mb-3 question">
+                    <label class="form-label">7️⃣ Denbora muga bat al dago lanaren aurkezpenean eta defentsan? Egiazkoa bada, zenbat?</label>
+                    <select class="form-select" required>
+                        <option value="">Aukeratu bat</option>
+                        <option>Ez</option>
+                        <option>Bai, 40 minutu</option>
+                        <option>Bai, 30m</option>
+                    </select>
+                    <div class="respuesta-correcta d-none"></div>
+                </div>
+
+                <!-- Pregunta 8 -->
+                <div class="mb-3 question">
+                    <label class="form-label">8️⃣ Zer gertatzen da lana suspendituz gero?</label>
+                    <select class="form-select" required>
+                        <option value="">Aukeratu bat</option>
+                        <option>Epaimahiak txosten bat osatuko du lana hobetzeko gomendioekin</option>
+                        <option>Lanaren gaia aldatu egin beharko dezu</option>
+                    </select>
+                    <div class="respuesta-correcta d-none"></div>
+                </div>
+
+                <!-- Pregunta 9 -->
+                <div class="mb-3 question">
+                    <label class="form-label">9️⃣ GAL-a EHU organismotik kanpo garatu daiteke?</label>
+                    <select class="form-select" required>
+                        <option value="">Aukeratu bat</option>
+                        <option>Bai</option>
+                        <option>Ez</option>
+                    </select>
+                    <div class="respuesta-correcta d-none"></div>
+                </div>
+
+                <!-- Pregunta 10 -->
+                <div class="mb-3 question">
+                    <label class="form-label">🔟 Lan mota adostutakoan, zein izango da lanaren zuzendaria? (Aukeratu zuzenak)</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="q10" value="Ausazko irakasle bat">
+                        <label class="form-check-label">Ausazko irakasle bat</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="q10" value="Enpresako langileak">
+                        <label class="form-check-label">Enpresako langileak</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="q10" value="Adostatuko irakaslea">
+                        <label class="form-check-label">Adostatuko irakaslea</label>
+                    </div>
+                    <div class="respuesta-correcta d-none"></div>
+                </div>
+
+                <!-- Pregunta 11 -->
+                <div class="mb-3 question">
+                    <label class="form-label">11 Ze nota atera beharko duzu “Ohorezko Matrikularen” aipamena lortzeko?</label>
+                    <select class="form-select" required>
+                        <option value="">Aukeratu bat</option>
+                        <option>10 baino gehiago</option>
+                        <option>10</option>
+                        <option>9 edo gehiago</option>
+                    </select>
+                    <div class="respuesta-correcta d-none"></div>
+                </div>
+
+                <div class="text-center mt-4 pb-5">
+                    <button type="submit" class="btn btn-success px-4">Bidali erantzunak</button>
+                </div>
+            </form>
+
+            <div id="emaitza" class="alert alert-info mt-4 d-none"></div>
+        </div>
     </div>
-  </div>
+</div>
+
+<!-- Menú móvil inferior -->
+<div id="menu-container" class="d-block d-md-none"></div>
+
+<!-- SCRIPTS NECESARIOS -->
+<script src="theme.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -202,24 +219,23 @@
 
         // Respuestas correctas
         const correctAnswers = [
-            "2 deialdi", // Pregunta 1
-            "Bai", // Pregunta 2
-            ["Lehendakaria", "Gaiaren inguruan ezagutzak dituen irakaslea edo kidea"], // Pregunta 3 (Corregido para que sea más preciso)
-            "Bai, baina baldintza batzuk bete behar dira.", // Pregunta 4 ¡CORREGIDO! El texto debe ser exacto.
-            "12", // Pregunta 5
-            "60", // Pregunta 6
-            "Bai, 30m", // Pregunta 7
-            "Epaimahiak txosten bat osatuko du lana hobetzeko gomendioekin", // Pregunta 8
-            "Bai", // Pregunta 9
-            ["Enpresako langileak", "Adostatuko irakaslea"], // Pregunta 10 (ahora funciona con checkboxes)
-            "9 edo gehiago" // Pregunta 11
+            "2 deialdi",
+            "Bai",
+            ["Lehendakaria", "Gaiaren inguruan ezagutzak dituen irakaslea edo kidea"],
+            "Bai, baina baldintza batzuk bete behar dira.",
+            "12",
+            "60",
+            "Bai, 30m",
+            "Epaimahiak txosten bat osatuko du lana hobetzeko gomendioekin",
+            "Bai",
+            ["Enpresako langileak", "Adostatuko irakaslea"],
+            "9 edo gehiago"
         ];
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
             let score = 0;
             const now = new Date().toLocaleString();
-
             const questions = form.querySelectorAll(".question");
 
             questions.forEach((questionDiv, index) => {
@@ -233,42 +249,29 @@
 
                 let isCorrect = false;
 
-                // Lógica para <select>
+                // Lógica Select
                 if (select) {
                     isCorrect = select.value === correctAnswer;
-                    select.classList.toggle("correct", isCorrect);
-                    select.classList.toggle("incorrect", !isCorrect);
+                    select.classList.remove("correct", "incorrect");
+                    select.classList.add(isCorrect ? "correct" : "incorrect");
                     feedbackDiv.textContent = isCorrect ? "✅ Zure erantzuna zuzena!" : `❌ Erantzun zuzena: ${correctAnswer}`;
+                    feedbackDiv.className = isCorrect ? "respuesta-correcta text-success-custom" : "respuesta-correcta text-danger-custom";
                 }
 
-                // Lógica para <input type="radio">
+                // Lógica Radio
                 else if (radios.length > 0) {
                     const checkedValue = [...radios].find(r => r.checked)?.value;
                     isCorrect = checkedValue === correctAnswer;
                     feedbackDiv.textContent = isCorrect ? "✅ Zure erantzuna zuzena!" : `❌ Erantzun zuzena: ${correctAnswer}`;
-                    // Opcional: añadir feedback visual a los radios
-                    [...radios].forEach(r => {
-                        r.parentElement.classList.remove("correct", "incorrect");
-                        if (r.checked) {
-                            r.parentElement.classList.add(isCorrect ? "correct" : "incorrect");
-                        }
-                    });
+                    feedbackDiv.className = isCorrect ? "respuesta-correcta text-success-custom" : "respuesta-correcta text-danger-custom";
                 }
 
-                // Lógica para <input type="checkbox">
+                // Lógica Checkbox
                 else if (checkboxes.length > 0) {
                     const checkedValues = [...checkboxes].filter(c => c.checked).map(c => c.value);
-                    // Comprueba si los arrays son idénticos (mismos elementos, sin importar el orden)
                     isCorrect = correctAnswer.length === checkedValues.length && correctAnswer.every(val => checkedValues.includes(val));
-
                     feedbackDiv.textContent = isCorrect ? "✅ Zure erantzuna zuzena!" : `❌ Erantzun zuzena: ${correctAnswer.join(", ")}`;
-                    // Opcional: añadir feedback visual a los checkboxes
-                    [...checkboxes].forEach(c => {
-                        c.parentElement.classList.remove("correct", "incorrect");
-                        if (c.checked) {
-                            c.parentElement.classList.add(isCorrect ? "correct" : "incorrect");
-                        }
-                    });
+                    feedbackDiv.className = isCorrect ? "respuesta-correcta text-success-custom" : "respuesta-correcta text-danger-custom";
                 }
 
                 if (isCorrect) score++;
@@ -283,12 +286,13 @@
             emaitza.textContent = `📊 Emaitza: ${score}/${correctAnswers.length} galdera ondo erantzunda.`;
             localStorage.setItem("ultimos_resultados_gal", JSON.stringify(resultados));
             emaitza.classList.remove("d-none");
+
+            // Scroll al resultado
+            emaitza.scrollIntoView({ behavior: 'smooth' });
         });
     });
 </script>
-<div id="menu-container" class="d-block d-md-none"></div>
 <script src="loader-menu.js"></script>
-<script src="theme.js"></script>
 
 </body>
 </html>
